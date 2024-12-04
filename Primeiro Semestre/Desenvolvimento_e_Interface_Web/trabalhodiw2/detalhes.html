@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detalhes do Produto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #292929;
+    }
+
+    .card {
+  border: 3px solid #000;
+  border-radius: 9px;
+  padding: 20px;
+  background-color: #ffffff;
+}
+  </style>
+</head>
+<body>
+  <div class="container ">
+    <h1 class="text-light">Detalhes do Produto</h1>
+
+<div id="productDetails"></div>
+  </div>
+  <script>
+    // Extrair o ID do produto da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get("id");
+
+    // Função para carregar os detalhes do produto
+    async function carregarDetalhesProduto() {
+      // Fazer uma requisição à API para obter os detalhes do produto
+      const response = await fetch(`https://diwserver.vps.webdock.cloud/products/${productId}`);
+      const produto = await response.json();
+
+      // Exibir os detalhes do produto na página
+      const productDetails = document.getElementById("productDetails");
+      productDetails.innerHTML = `
+        <div class="card">
+          <img src="${produto.image}" class="card-img-top w-25 h-25 mx-auto">
+          <div class="card-body">
+            <h5 class="card-title">${produto.title}</h5>
+            <p class="card-text">${produto.description}</p>
+            <p class="card-text">Price: $${produto.price}</p>
+            <p class="card-text">Category: ${produto.category}</p>
+            <p class="card-text">Rating: ${produto.rating.rate}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    // Chamar a função para carregar os detalhes do produto ao carregar a página
+    carregarDetalhesProduto();
+  </script>
+</body>
+</html>

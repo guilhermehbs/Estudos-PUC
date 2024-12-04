@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página Responsiva</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <style>
+        html {
+            overflow-x: hidden;
+        }
+
+        .collapsenavbar-collapse {
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .descrição {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .img_produto {
+            border-radius: 40px;
+            border: solid;
+            border-color: rgba(0, 0, 0, 0.855);
+        }
+
+        .título {
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .logo-img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .NL {
+            position: relative;
+            left: 280px;
+        }
+
+        .list-footer {
+            list-style: none;
+            color: rgb(130, 130, 130);
+        }
+
+        .rodape {
+            text-decoration: none;
+            list-style: none;
+            align-items: center;
+            background: black;
+            font-size: 15px;
+            height: 150px;
+        }
+
+        .lista {
+            padding-top: 75px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <h2>XLO</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Produtos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contato</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline ml-auto">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
+                            aria-label="Pesquisar">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse NL" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Todos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Casa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Carro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Vestuário</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Para Casa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Eletrônico</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="mt-5">
+        <h2 class="título mb-5">Página do Produto</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <img src="OIP.jpeg" class="card-img-top img_produto" alt="Foto do Produto">
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="card-body descrição">
+                        <h5 class="card-title T_produto">Air Jordan One</h5>
+                        <hr>
+                        <h6 class="card-subtitle mb-2 text-muted">R$ 5000.00</h6>
+                        <p class="card-text">Descrição do Produto</p>
+                        <p class="card-text">
+                            O Air Jordan One é um icônico tênis de basquete da linha Air Jordan, criada em parceria com
+                            a Nike. Lançado pela primeira vez em 1985, o Air Jordan One foi projetado pelo lendário
+                            designer de calçados Peter Moore e apresentou uma abordagem revolucionária para o design de
+                            tênis de basquete</p>
+                        <p class="card-text">Classificação: 5 estrelas</p>
+                        <a href="#" class="btn btn-primary">Adicionar ao Carrinho</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <footer class="rodape">
+        <div class="row mt-3 ml-5 lista">
+            <div class="col-3">
+                <li><a href="#">Dicas de segurança</a></li>
+            </div>
+            <div class="col-3">
+                <li><a href="#">Ajuda e contato</a></li>
+            </div>
+            <div class="col-3">
+                <li><a href="#">Vender na XLO</a></li>
+            </div>
+            <div class="col-3">
+                <li><a href="#">Mapa do site</a></li>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

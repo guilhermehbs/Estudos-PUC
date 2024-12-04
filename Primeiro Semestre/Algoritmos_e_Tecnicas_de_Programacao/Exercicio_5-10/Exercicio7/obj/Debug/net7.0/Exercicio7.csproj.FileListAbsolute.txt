@@ -1,0 +1,15 @@
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\Exercicio7.csproj.AssemblyReference.cache
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\Exercicio7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\Exercicio7.AssemblyInfoInputs.cache
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\Exercicio7.AssemblyInfo.cs
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\Exercicio7.csproj.CoreCompileInputs.cache
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\bin\Debug\net7.0\Exercicio7.exe
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\bin\Debug\net7.0\Exercicio7.deps.json
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\bin\Debug\net7.0\Exercicio7.runtimeconfig.json
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\bin\Debug\net7.0\Exercicio7.dll
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\bin\Debug\net7.0\Exercicio7.pdb
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\Exercicio7.dll
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\refint\Exercicio7.dll
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\Exercicio7.pdb
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\Exercicio7.genruntimeconfig.cache
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Exercicio_5-10\Exercicio7\obj\Debug\net7.0\ref\Exercicio7.dll

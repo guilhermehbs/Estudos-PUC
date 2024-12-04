@@ -1,0 +1,15 @@
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\bin\Debug\net6.0\JogoDosErros.exe
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\bin\Debug\net6.0\JogoDosErros.deps.json
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\bin\Debug\net6.0\JogoDosErros.runtimeconfig.json
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\bin\Debug\net6.0\JogoDosErros.dll
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\bin\Debug\net6.0\JogoDosErros.pdb
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\JogoDosErros.csproj.AssemblyReference.cache
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\JogoDosErros.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\JogoDosErros.AssemblyInfoInputs.cache
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\JogoDosErros.AssemblyInfo.cs
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\JogoDosErros.csproj.CoreCompileInputs.cache
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\JogoDosErros.dll
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\refint\JogoDosErros.dll
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\JogoDosErros.pdb
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\JogoDosErros.genruntimeconfig.cache
+C:\Users\gui10\OneDrive\Documentos\PUC\ATP\Jogo dos Erros\JogoDosErros\JogoDosErros\obj\Debug\net6.0\ref\JogoDosErros.dll

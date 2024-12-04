@@ -1,0 +1,328 @@
+1)
+using System;
+
+namespace Exercicio1
+{
+class Program
+    {
+        static void Main(string[] args)
+        {
+            positivoOuNegativo();
+        }
+        static int positivoOuNegativo()
+        {
+            int numero;
+            Console.WriteLine("Digite o número:");
+            numero = int.Parse(Console.ReadLine());
+
+            if (numero > 0)
+            {
+                Console.WriteLine("O número é positivo");
+            }
+            else if (numero < 0)
+            {
+                Console.WriteLine("O número é negativo");
+            }
+            else
+            {
+                Console.WriteLine("O número é zero");
+            }
+            return numero;
+        }
+    }
+
+}
+
+2) 
+using System;
+
+namespace Exercicio2
+{
+class Program
+    {
+        static double somaMedia (){
+            double soma = 0, media;
+            double [] vetor = new double [3];
+            for (int i = 0; i < vetor.Length; i++)
+            {
+                Console.WriteLine("Digite um número: ");
+                vetor[i] = double.Parse(Console.ReadLine());
+                soma += vetor[i];
+
+            }
+            media = soma/3;
+            return media;
+        }
+        static void Main(string[] args)
+
+        {
+            double valor = 0;
+            valor = somaMedia();
+            Console.WriteLine("O valor da média: " + valor);
+
+        }
+    }
+}
+
+3)
+using System;
+
+namespace Exercicio3
+{
+class Program
+    {
+       
+        static string verificarNumeroPrimo(int numero)
+        {
+            int divisor = 1, resto = 0;
+            while (divisor<= numero)
+            {
+                if (numero % divisor == 0)
+                {
+                    resto += 1;
+                }
+                divisor += 1;
+            }
+            if (resto == 2)
+            {
+                return "O número é primo";
+            }
+            else
+            {
+                return "O número não é primo";
+            }
+        }
+                static void Main(string[] args)
+    {
+            Console.WriteLine("Digite o num inteiro");
+            int numero = int.Parse(Console.ReadLine());
+            string verificar;
+            verificar = verificarNumeroPrimo(numero);
+            Console.WriteLine(verificar);
+    }
+    }
+           
+}
+
+4)
+using System;
+
+namespace Exercicio4
+{
+class Program
+    {
+        static double calcularMedia (){
+            double soma = 0, media;
+            double [] vetor = new double []{27.2, 12, 9.5, 15, 9};
+            for (int i = 0; i < vetor.Length; i++)
+            {
+                soma += vetor[i];
+
+            }
+            media = soma/3;
+            return media;
+        }
+        static void Main(string[] args)
+
+        {
+            double media = 0;
+            media = calcularMedia();
+            Console.WriteLine("O valor da media: " + media);
+
+        }
+    }
+}   
+
+5)
+using System;
+
+namespace Exercicio5
+{
+ class Program
+{
+     static void Main(String[] args)
+    {
+        string[] nomes = { "Lucas", "Gabriel", "Renata", "Leandro" };
+
+        imprimirNomes(nomes);
+    }
+
+     static void imprimirNomes(string[] nomes)
+    {
+        for (int i = 0; i < nomes.Length; i++)
+        {
+            Console.WriteLine(nomes[i]);
+        }
+    }
+}
+}
+
+6)
+using System;
+
+namespace Exercicio6
+{
+ class Program
+{
+     static void Main(String[] args)
+    {
+        int[] numeros = { 15, 10, 50, 40, 70 };
+
+        float media = calcularMedia(numeros);
+        Console.WriteLine("A média é: " + media);
+    }
+
+     static float calcularMedia(int[] numero)
+    {
+        int soma = 0;
+
+        for (int i = 0; i < numero.Length; i++)
+        {
+            soma += numero[i];
+        }
+
+        float media = (float)soma / numero.Length;
+        return media;
+    }
+}
+}
+
+7)
+using System;
+
+namespace Exercicio7
+{
+    class Program
+    {
+
+        static float valorCentimetro;
+        static void metrosParaCentimetro(float metros)
+        {
+            valorCentimetro = metros * 100;
+        }
+        static void Main(String[] args)
+        {
+            Console.Write("Digite o valor em metros: ");
+            float valorMetros = float.Parse(Console.ReadLine());
+
+            metrosParaCentimetro(valorMetros);
+
+            Console.WriteLine("O valor em centímetros é: " + valorCentimetro + " cm"); 
+        }
+    }    
+}
+
+8)
+using System;
+
+namespace Exercicio8
+{
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite a base do triângulo: ");
+        double @base = double.Parse(Console.ReadLine());
+
+        Console.Write("Digite a altura do triângulo: ");
+        double altura = double.Parse(Console.ReadLine());
+
+        double[] vetor = areaTriangulo(@base, altura);
+
+        Console.WriteLine("A área do triângulo é: " + vetor[0]);
+    }
+
+    static double[] areaTriangulo(double @base, double altura)
+    {
+        double area = (@base * altura) / 2;
+
+        double[] resultado = new double[3];
+        resultado[0] = area;
+        resultado[1] = @base;
+        resultado[2] = altura;
+
+        return resultado;
+    }
+}
+}
+
+9)
+using System;
+
+namespace Exercicio9
+{
+    class Program
+    {
+            public static int calcularSomaMatriz(int[,] matriz)
+            {
+                int soma = 0;
+
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+
+                        soma += matriz[i, j];
+
+                    }
+                }
+
+                return soma;
+            }
+        static void Main(String[] args)
+        {
+            int[,] matriz = new int[3, 3];
+            matriz[0, 0] = 1;
+            matriz[0, 1] = 2;
+            matriz[0, 2] = 3;
+            matriz[1, 0] = 4;
+            matriz[1, 1] = 5;
+            matriz[1, 2] = 6;
+            matriz[2, 0] = 7;
+            matriz[2, 1] = 8;
+            matriz[2, 2] = 9;
+
+            int soma = calcularSomaMatriz(matriz);
+
+            Console.WriteLine("A soma dos elementos da matriz é igual a: " + soma);
+        }
+    }
+}
+
+10)
+using System;
+
+namespace Exercicio10
+{
+    class Program
+    {
+        public static int encontrarMaiorValorSegundaColuna(int[,] matriz)
+        {
+        int maiorValor = matriz[0, 1];
+
+            for (int i = 1; i < matriz.GetLength(0); i++)
+            {
+                int valorAtual = matriz[i, 1];
+
+                if (valorAtual > maiorValor)
+                {
+                    maiorValor = valorAtual;
+                }
+            }
+
+            return maiorValor;
+        }
+        static void Main(String[] args)
+        {
+            int[,] matriz = new int[5, 2]
+            {
+                { 1, 6 },
+                { 2, 7 },
+                { 3, 8 },
+                { 4, 9 },
+                { 5, 10 }
+            };
+
+             int maiorValorSegundaColuna = encontrarMaiorValorSegundaColuna(matriz);
+            Console.WriteLine("O maior valor na segunda coluna é: " + maiorValorSegundaColuna);
+        }
+    }
+}

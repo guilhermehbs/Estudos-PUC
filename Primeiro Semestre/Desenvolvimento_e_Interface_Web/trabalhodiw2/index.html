@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loja Online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
+  
+</head>
+  <style>
+      body {
+        background-color: rgb(42, 41, 41);
+      }
+
+    header {
+      
+      padding: 5px;
+    }
+
+    .navbar-brand {
+      color: white;
+      font-weight: bold;
+      font-size: 25px;
+    }
+
+    .navbar-collapse ul {
+      margin-right: 7;
+    }
+
+    .navbar-nav li {
+      padding: 10px;
+     
+    }
+
+    .navbar-nav li span {
+      color: white;
+      font-size: 14px;
+
+    }
+
+    @media (max-width: 576px) {
+      .navbar-nav li {
+        padding: 5px 10px;
+        
+      }
+
+      .navbar-brand,
+      .navbar-nav li span {
+        font-size: 16px;
+      }
+      .small-navbar-toggler {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+      }
+      
+    
+  </style>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg border border-light" style="border-width: 7px;">
+      <a class="navbar-brand " href="#">DIW- Trabalho Prático 2</a>
+      <button class="navbar-toggler bg-white small-navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"  ></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item ">
+            <span class="nav-link">Nome: Amanda Avelino Camilo Barreto Santos</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link">Curso: Análise e Desenvolvimento de Sistemas</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link">Matrícula: 813259</span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Pesquisar" id="searchInput">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="searchButton">Buscar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container ">
+    <div class="container-fluid mt-3 border-black">
+      <div class="row mx-1">
+        <div class="col-lg-3 border-black">
+          <div class="text-center pt-1">
+            <h6 class="text-light text-decoration-underline">Filtro Rápido</h6>
+          </div>
+          <select id="categoriaSelect" class="form-select form-select-sm mb-2 border-dark mx-auto" onchange="filtroRapido()">
+            <option selected>Categorias</option>
+            <option value="Apparel - Topwear">Roupas</option>
+            <option value="Footwear - Shoes">Sapatos</option>
+            <option value="Apparel - Apparel Set">Touca de natação</option>
+          </select>
+        </div> 
+        <div class="col-lg-9">
+          <div class="row" id="cardContainer">
+            <!-- Aqui serão inseridos os cards -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container-fluid mt-3">
+      <div class="row bg-black bg-gradient m-2 rounded p-2">
+          <div class="col-md-12">
+              <div class="row">
+                  <div class="col-md-3">
+
+                      <div class="row">
+                          <div class="col">
+                              <h5 class="text-center text-light text-decoration-underline">Formas de Pagamento</h5>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col">
+                              <p class="text-center text-lightk fs-5">
+                              <i class="bi bi-coin text-light" style="font-size: 30px;"></i>
+                              <i class="bi bi-credit-card text-light" style="font-size: 30px;"> </i>
+                              <i class="bi bi-cash text-light" style="font-size: 30px;"></i>
+                              <i class="bi bi-currency-bitcoin text-light" style="font-size: 30px;"></i>
+                              <i class="bi bi-paypal text-light" style="font-size: 30px;"></i>
+                              </p>
+                          </div>
+                      </div>
+
+                  </div>
+
+                  <div class="col-md-3">
+
+                      <div class="row">
+                          <div class="col">
+                              <h5 class="text-center text-light text-decoration-underline">Links Rapidos</h5>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col">
+                              <p class="text-center"><a href="#"><i class="bi bi-house-door" style="font-size: 30px; color: white;"></i></a></p>
+                              <p class="text-center"><a href="#"><i class="bi bi-question-circle" style="font-size: 30px; color: white;"></i></a></p>
+                          </div>
+                      </div>
+
+                  </div>
+
+                  <div class="col-md-3">
+
+                      <div class="row">
+                          <div class="col">
+                              <h5 class="text-center text-light text-decoration-underline">Redes Sociais</h5>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col">
+                              <p class="text-center text-light fs-5">
+                                  <i class="bi bi-instagram text-light" style="font-size: 30px;"></i>
+                                  <i class="bi bi-facebook text-light" style="font-size: 30px;"></i>
+                                  <i class="bi bi-twitter text-light" style="font-size: 30px;"></i>
+                                  <i class="bi bi-youtube text-light" style="font-size: 30px;"></i>
+                                  <i class="bi bi-tiktok text-light" style="font-size: 30px;"></i>
+                                  <i class="bi bi-whatsapp text-light" style="font-size: 30px;"></i>
+
+
+
+                              </p>
+                          </div>
+                      </div>
+
+                  </div>
+
+                  <div class="col-md-3">
+
+                      <div class="row">
+                          <div class="col">
+                              <h5 class="text-center text-light text-decoration-underline">Contatos</h5>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col">
+                              <p class="text-light"><i class="bi bi-envelope" style="font-size: 22px;"> </i>  Em caso de algum produto com defeito,nos contate pelo e-mail: lojaonline@amaistop.com.br</p>
+                              <p class="text-light"><i class="bi bi-telephone" style="font-size: 22px;"> </i> 0800 333 890</p>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="justify-content-center">
+                      <p class="text-center text-light"> Sua loja online preferida.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="produtos"></div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+  <script>
+  // Função para buscar os produtos
+function fetchProducts() {
+  fetch('https://diwserver.vps.webdock.cloud/products')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      productList = data.products;
+      renderProducts(productList);
+    })
+    
+}
+
+
+// Função para filtrar os produtos
+function filterProducts() {
+  var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  var filteredProducts = [];
+
+  for (var i = 0; i < productList.length; i++) {
+    var product = productList[i];
+    var productName = product.title.toLowerCase();
+    var productId = product.id.toString();
+
+    if (productName.includes(searchTerm) || productId.includes(searchTerm)) {
+      filteredProducts.push(product);
+    }
+  }
+
+  renderProducts(filteredProducts);
+}
+
+
+// Função para renderizar os produtos na página
+function renderProducts(products) {
+  var cardContainer = document.getElementById('cardContainer');
+  cardContainer.innerHTML = '';
+
+  for (var i = 0; i < products.length; i++) {
+    var product = products[i];
+
+    var card = document.createElement('div');
+    card.className = 'col-md-4 mb-3 pt-2';
+
+    var cardContent = `
+      <div class="card md-4 mb-3 h-100 mt-2">
+        <img src="${product.image}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${product.title}</h5>
+          <p class="card-text">${product.rating.rate}</p>
+          <p class="card-text">R$${product.price}</p>
+          <a href="detalhes.html?id=${product.id}" class="btn btn-dark">Mais detalhes</a>
+        </div>
+      </div>
+    `;
+
+    card.innerHTML = cardContent;
+    cardContainer.appendChild(card);
+  }
+}
+
+
+// Função para lidar com o evento de clique no botão de busca
+function handleSearch() {
+  filterProducts();
+}
+
+// Função para lidar com o evento de carregamento do DOM
+function handleDOMContentLoaded() {
+  var searchButton = document.getElementById('searchButton');
+  searchButton.addEventListener('click', handleSearch);
+
+  fetchProducts();
+}
+
+// Evento de carregamento do DOM
+document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+
+   
+    
+  </script>
+</body>
+</html>
