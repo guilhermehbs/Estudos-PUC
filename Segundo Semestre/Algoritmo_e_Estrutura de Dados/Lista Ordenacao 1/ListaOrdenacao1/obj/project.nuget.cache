@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "zFsS6y49HhFRW68su4nL5XP41gsDQtiCFEkieUH8C1vtCbpPQ0/HT92KSRTJvTTm46pnyRW25vdAE3IHYMplQg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gui10\\OneDrive\\Documentos\\PUC\\Segundo Semestre\\AED\\ListaOrdenacao1\\ListaOrdenacao1\\ListaOrdenacao1\\ListaOrdenacao1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gui10\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.24\\microsoft.windowsdesktop.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\gui10\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.24\\microsoft.netcore.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\gui10\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.24\\microsoft.aspnetcore.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\gui10\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.24\\microsoft.netcore.app.host.win-x64.6.0.24.nupkg.sha512"
+  ],
+  "logs": []
+}

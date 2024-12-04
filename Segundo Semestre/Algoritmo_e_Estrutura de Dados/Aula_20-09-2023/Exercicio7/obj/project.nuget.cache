@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "iwrUYyI4c73CWQXovZi54wM+pH8o6j01zCeuvb0xus8H32idb4YFQL0+kPfJHGEmf5U1qw6mbzIluMFAlsegVA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gui10\\OneDrive\\Documentos\\PUC\\Segundo Semestre\\AED\\Aula_20-09-2023\\Exercicio7\\Exercicio7.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gui10\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.22\\microsoft.windowsdesktop.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\gui10\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.22\\microsoft.netcore.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\gui10\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.22\\microsoft.aspnetcore.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\gui10\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.22\\microsoft.netcore.app.host.win-x64.6.0.22.nupkg.sha512"
+  ],
+  "logs": []
+}

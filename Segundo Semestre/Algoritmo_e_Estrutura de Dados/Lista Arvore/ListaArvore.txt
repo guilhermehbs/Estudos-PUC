@@ -1,0 +1,153 @@
+-----------------------------------------------------------------------------------
+1)
+
+    public int EncontrarFolhas(No i)
+    {
+        if (i == null)
+        {
+            return 0;
+        }
+        else if (i.esq == null && i.dir == null)
+        {
+            return 1;
+        }
+
+        int folhasEsquerda = EncontrarFolhas(i.esq);
+        int folhasDireita = EncontrarFolhas(i.dir);
+
+        return folhasEsquerda + folhasDireita;
+    }
+
+    public int EncontrarFolhas()
+    {
+        return EncontrarFolhas(raiz);
+    }
+
+-----------------------------------------------------------------------------------
+2)
+
+    private int EncontrarNoInterno(No i)
+    {
+        if (i == null || (i.esq == null && i.dir == null))
+        {
+            return 0;
+        }
+
+        int internoEsquerda = EncontrarNoInterno(i.esq);
+        int internoDireita = EncontrarNoInterno(i.dir);
+
+        return 1 + internoEsquerda + internoDireita;
+    }
+
+    public int EncontrarNoInterno()
+    {
+        return EncontrarNoInterno(raiz);
+    }
+
+-----------------------------------------------------------------------------------
+3)
+
+    public bool EhAVL()
+    {
+        return EhAVL(raiz);
+    }
+
+    private bool EhAVL(No i)
+    {
+        if (i == null)
+        {
+            return true;
+        }
+
+        int alturaEsquerda = ObterAltura(i.esq);
+        int alturaDireita = ObterAltura(i.dir);
+
+        int fatorEquilibrio = alturaDireita - alturaEsquerda;
+
+        if (fatorEquilibrio > 1 || fatorEquilibrio < -1)
+        {
+            return false;
+        }
+
+        return EhAVL(i.esq) && EhAVL(i.dir);
+    }
+
+    private int ObterAltura(No i)
+    {
+        if (i == null)
+        {
+            return 0;
+        }
+
+        int alturaEsquerda = ObterAltura(i.esq);
+        int alturaDireita = ObterAltura(i.dir);
+
+        int maxAltura;
+
+        if (alturaEsquerda > alturaDireita)
+        {
+            maxAltura = alturaEsquerda;
+        }
+        else
+        {
+            maxAltura = alturaDireita;
+        }
+
+        return 1 + maxAltura;
+    }
+
+-----------------------------------------------------------------------------------
+4)
+
+    public bool Remover(int elemento)
+    {
+        int pos = _Hash(elemento);
+        bool removido = false;
+
+        if (tabela[pos] == elemento)
+        {
+            tabela[pos] = NULO;
+            removido = true;
+        }
+        else if (tabela[pos] != NULO)
+        {
+            for(int i = 0; i < reserva; i++)
+            {
+                if (tabela[m1 + i] == elemento)
+                {
+                    tabela[m1 + i] = NULO;
+                    removido = true;
+                    break;
+                }
+            }
+        }
+        return removido;
+    }
+
+-----------------------------------------------------------------------------------
+5)
+
+    public bool Remover(int elemento)
+    {
+        bool removido = false;
+        int pos = _Hash(elemento);
+
+        if (tabela[pos] == elemento)
+        {
+            tabela[pos] = NULO;
+            removido = true;
+        }
+        else if (tabela[pos] != NULO)
+        {
+            pos = _Rehash(elemento);
+            if (tabela[pos] == elemento)
+            {
+                tabela[pos] = NULO;
+                removido = true;
+            }
+        }
+
+        return removido;
+    }
+
+-----------------------------------------------------------------------------------

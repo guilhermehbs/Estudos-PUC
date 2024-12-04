@@ -1,0 +1,126 @@
+/* Lógico_1: */
+
+CREATE TABLE CLIENTE (
+    codigo_cliente int PRIMARY KEY,
+    nome varchar,
+    contato varchar,
+    endereco varchar,
+    bairro varchar,
+    cidade varchar,
+    estado varchar,
+    cpf varchar,
+    data_nascimento date
+);
+
+CREATE TABLE ANIMAL_VENDA_SERVICOS (
+    codigo_animal int,
+    especie varchar,
+    valor double,
+    caminho_imagem varchar,
+    descricao varchar,
+    FK_CLIENTE_codigo_cliente int,
+    FK_FORNECEDOR_codigo_fornecedor int,
+    codigo_venda int,
+    data date,
+    quantidade int,
+    forma_pagamento varchar,
+    codigo_servico int,
+    tempo_servico varchar,
+    servico_realizado varchar,
+    PRIMARY KEY (codigo_animal, codigo_venda, codigo_servico)
+);
+
+CREATE TABLE NOTA_FISCAL (
+    codigo_nota int PRIMARY KEY,
+    FK_VENDA_codigo_venda int
+);
+
+CREATE TABLE FUNCIONARIO (
+    codigo_funcionario int PRIMARY KEY,
+    nome varchar,
+    funcao varchar,
+    cpf varchar
+);
+
+CREATE TABLE PRODUTOS (
+    codigo_produto int PRIMARY KEY,
+    nome varchar,
+    valor double,
+    categoria varchar,
+    descricao varchar,
+    caminho_imagem varchar,
+    FK_FORNECEDOR_codigo_fornecedor int,
+    FK_VENDA_codigo_venda int
+);
+
+CREATE TABLE FORNECEDOR (
+    codigo_fornecedor int PRIMARY KEY,
+    nome varchar,
+    categoria varchar,
+    endereco varchar,
+    bairro varchar,
+    cidade varchar,
+    estado varchar,
+    cnpj varchar
+);
+
+CREATE TABLE BANHO (
+    FK_SERVICOS_codigo_servico int PRIMARY KEY
+);
+
+CREATE TABLE TOSA (
+    FK_SERVICOS_codigo_servico int PRIMARY KEY
+);
+
+CREATE TABLE BANHO_E_TOSA (
+    FK_SERVICOS_codigo_servico int PRIMARY KEY
+);
+
+CREATE TABLE realiza (
+    fk_FUNCIONARIO_codigo_funcionario int,
+    fk_SERVICOS_codigo_servico int
+);
+ 
+ALTER TABLE ANIMAL_VENDA_SERVICOS ADD CONSTRAINT FK_ANIMAL_VENDA_SERVICOS_2
+    FOREIGN KEY (FK_CLIENTE_codigo_cliente)
+    REFERENCES CLIENTE (codigo_cliente)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE ANIMAL_VENDA_SERVICOS ADD CONSTRAINT FK_ANIMAL_VENDA_SERVICOS_3
+    FOREIGN KEY (FK_FORNECEDOR_codigo_fornecedor)
+    REFERENCES FORNECEDOR (codigo_fornecedor)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE NOTA_FISCAL ADD CONSTRAINT FK_NOTA_FISCAL_2
+    FOREIGN KEY (FK_VENDA_codigo_venda)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE PRODUTOS ADD CONSTRAINT FK_PRODUTOS_2
+    FOREIGN KEY (FK_FORNECEDOR_codigo_fornecedor)
+    REFERENCES FORNECEDOR (codigo_fornecedor)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE PRODUTOS ADD CONSTRAINT FK_PRODUTOS_3
+    FOREIGN KEY (FK_VENDA_codigo_venda)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE BANHO ADD CONSTRAINT FK_BANHO_2
+    FOREIGN KEY (FK_SERVICOS_codigo_servico)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE TOSA ADD CONSTRAINT FK_TOSA_2
+    FOREIGN KEY (FK_SERVICOS_codigo_servico)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE BANHO_E_TOSA ADD CONSTRAINT FK_BANHO_E_TOSA_2
+    FOREIGN KEY (FK_SERVICOS_codigo_servico)
+    REFERENCES ??? (???);
+ 
+ALTER TABLE realiza ADD CONSTRAINT FK_realiza_1
+    FOREIGN KEY (fk_FUNCIONARIO_codigo_funcionario)
+    REFERENCES FUNCIONARIO (codigo_funcionario)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE realiza ADD CONSTRAINT FK_realiza_2
+    FOREIGN KEY (fk_SERVICOS_codigo_servico)
+    REFERENCES ??? (???);

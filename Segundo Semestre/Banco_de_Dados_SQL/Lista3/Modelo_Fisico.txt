@@ -1,0 +1,101 @@
+/* Modelo_Logico: */
+
+CREATE TABLE ONIBUS (
+    placa varchar,
+    chassi varchar,
+    capacidade int,
+    modelo varchar,
+    ano_fabricacao date,
+    PRIMARY KEY (placa, chassi)
+);
+
+CREATE TABLE FUNCIONARIO (
+    ctps varchar,
+    cpf varchar,
+    nome varchar,
+    FK_VIAGEM_id_viagem varchar,
+    FK_ONIBUS_placa varchar,
+    FK_ONIBUS_chassi varchar,
+    PRIMARY KEY (ctps, cpf)
+);
+
+CREATE TABLE MECANICO (
+    numero_armario int,
+    FK_FUNCIONARIO_ctps varchar,
+    FK_FUNCIONARIO_cpf varchar,
+    PRIMARY KEY (FK_FUNCIONARIO_ctps, FK_FUNCIONARIO_cpf)
+);
+
+CREATE TABLE MOTORISTA (
+    data_obtencao date,
+    data_validade date,
+    categoria varchar,
+    cnh varchar,
+    FK_FUNCIONARIO_ctps varchar,
+    FK_FUNCIONARIO_cpf varchar,
+    PRIMARY KEY (FK_FUNCIONARIO_ctps, FK_FUNCIONARIO_cpf)
+);
+
+CREATE TABLE ADMINISTRATIVO (
+    codigo_bancario int,
+    FK_FUNCIONARIO_ctps varchar,
+    FK_FUNCIONARIO_cpf varchar,
+    PRIMARY KEY (FK_FUNCIONARIO_ctps, FK_FUNCIONARIO_cpf)
+);
+
+CREATE TABLE COBRADOR (
+    numero_viagens int,
+    valor_acumulado double,
+    FK_FUNCIONARIO_ctps varchar,
+    FK_FUNCIONARIO_cpf varchar,
+    PRIMARY KEY (FK_FUNCIONARIO_ctps, FK_FUNCIONARIO_cpf)
+);
+
+CREATE TABLE VIAGEM (
+    data_partida date,
+    horario_partida time,
+    data_chegada date,
+    horario_chegada time,
+    duracao_viagem double,
+    cidade_partida varchar,
+    cidade_chegada varchar,
+    numero_passageiros int,
+    id_viagem varchar PRIMARY KEY,
+    FK_ONIBUS_placa varchar,
+    FK_ONIBUS_chassi varchar
+);
+ 
+ALTER TABLE FUNCIONARIO ADD CONSTRAINT FK_FUNCIONARIO_2
+    FOREIGN KEY (FK_VIAGEM_id_viagem)
+    REFERENCES VIAGEM (id_viagem)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE FUNCIONARIO ADD CONSTRAINT FK_FUNCIONARIO_3
+    FOREIGN KEY (FK_ONIBUS_placa, FK_ONIBUS_chassi)
+    REFERENCES ONIBUS (placa, chassi)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE MECANICO ADD CONSTRAINT FK_MECANICO_2
+    FOREIGN KEY (FK_FUNCIONARIO_ctps, FK_FUNCIONARIO_cpf)
+    REFERENCES FUNCIONARIO (ctps, cpf)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE MOTORISTA ADD CONSTRAINT FK_MOTORISTA_2
+    FOREIGN KEY (FK_FUNCIONARIO_ctps, FK_FUNCIONARIO_cpf)
+    REFERENCES FUNCIONARIO (ctps, cpf)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE ADMINISTRATIVO ADD CONSTRAINT FK_ADMINISTRATIVO_2
+    FOREIGN KEY (FK_FUNCIONARIO_ctps, FK_FUNCIONARIO_cpf)
+    REFERENCES FUNCIONARIO (ctps, cpf)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE COBRADOR ADD CONSTRAINT FK_COBRADOR_2
+    FOREIGN KEY (FK_FUNCIONARIO_ctps, FK_FUNCIONARIO_cpf)
+    REFERENCES FUNCIONARIO (ctps, cpf)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE VIAGEM ADD CONSTRAINT FK_VIAGEM_2
+    FOREIGN KEY (FK_ONIBUS_placa, FK_ONIBUS_chassi)
+    REFERENCES ONIBUS (placa, chassi)
+    ON DELETE RESTRICT;

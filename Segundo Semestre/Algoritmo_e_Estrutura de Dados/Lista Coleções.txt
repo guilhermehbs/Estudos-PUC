@@ -1,0 +1,649 @@
+1)
+
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Exercicio1
+{
+    class Program
+    {
+        static List<string> list = new List<string>();
+
+        static void Main(string[] args)
+        {
+            int opcao = 0;
+
+            while (opcao != 9)
+            {
+
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("             MENU               ");
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("1 - Adicionar filme");
+                Console.WriteLine("2 - Adicionar filme na posição");
+                Console.WriteLine("3 - Remover filme");
+                Console.WriteLine("4 - Remover filme na posição");
+                Console.WriteLine("5 - Procurar filme");
+                Console.WriteLine("6 - Imprimir lista");
+                Console.WriteLine("7 - Inverter lista");
+                Console.WriteLine("8 - Ordenar lista");
+                Console.WriteLine("9 - Sair");
+
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+
+                        Console.WriteLine("Digite o nome do filme: ");
+                        string nome = Console.ReadLine();
+
+                        adicionarFilme(nome);
+                        break;
+
+                    case 2:
+                        Console.WriteLine("Digite a posição que deseja innserir o filme: ");
+                        int posicao = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Digite o nome do filme a ser inserido: ");
+                        nome = Console.ReadLine();
+
+                        inserirFilmePosicao(posicao, nome);
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Digite o nome do filme para ser removido");
+                        nome = Console.ReadLine();
+
+                        removerFilme(nome);
+                        break;
+                    
+                    case 4:
+                        Console.WriteLine("Digite a posição do filme que deseja remover: ");
+                        posicao = int.Parse(Console.ReadLine());
+
+                        removerFilmePosicao(posicao);
+
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Digite o nome do filme que deseja procurar: ");
+                        nome = Console.ReadLine();
+
+                        procurarFilme(nome);
+
+                        break;
+
+                    case 6:
+                        imprimirLista();
+                        break;
+
+                    case 7:
+                        inverterLista();
+                        imprimirLista();
+                        break;
+
+                    case 8:
+                        ordenarLista();
+                        imprimirLista();
+                        break;
+
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Opção inválida");
+                        Console.ResetColor();
+                        break;
+                }
+            }
+        }
+
+        static bool adicionarFilme(string nome)
+        {
+            list.Add(nome);
+            return true;
+        }
+
+        static void inserirFilmePosicao(int posicao, string nome)
+        {
+            if (posicao > list.Count)
+            {
+                Console.WriteLine($"A posição não existe, a lista tem {list.Count} posições");
+            }
+            else
+            {
+                list.Insert(posicao, nome);
+            }
+        }
+
+        static void removerFilme(string nome)
+        {
+            if (list.Contains(nome))
+            {
+                list.Remove(nome);
+                Console.WriteLine("Removido");
+            }
+            else
+            {
+                Console.WriteLine("Livro não está na lista de filmes");
+            }
+        }
+
+        static void removerFilmePosicao(int posicao)
+        {
+            if (posicao <= list.Count)
+            {
+                list.RemoveAt(posicao);
+                Console.WriteLine("Removido");
+            }
+            else
+            {
+                Console.WriteLine("A posição não existe");
+            }
+        }
+
+        static bool procurarFilme(string nome)
+        {
+            if (list.Contains(nome))
+            {
+                return true;
+            } else 
+            { 
+                return false; 
+            }
+        }
+
+        static void imprimirLista()
+        {
+            foreach (string filme in list)
+            {
+                Console.WriteLine(filme);
+            }
+        }
+
+        static void inverterLista()
+        {
+            list.Reverse();
+        }
+
+        static void ordenarLista()
+        {
+            list.Sort();
+        }
+    }
+}
+
+
+2)
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<int> numeros = new List<int>();
+
+        while (true)
+        {
+            Console.WriteLine("Escolha uma opção:");
+            Console.WriteLine("1 - Inserir número na lista");
+            Console.WriteLine("2 - Verificar se um número está na lista");
+            Console.WriteLine("3 - Exibir a soma de todos os números na lista");
+            Console.WriteLine("4 - Exibir o maior número na lista");
+            Console.WriteLine("5 - Exibir o menor número na lista");
+            Console.WriteLine("6 - Remover todos os números pares da lista");
+            Console.WriteLine("7 - Exibir os números na lista após a remoção dos pares");
+            Console.WriteLine("8 - Inverter os elementos da lista");
+            Console.WriteLine("9 - Encerrar o programa");
+
+            int escolha;
+            if (int.TryParse(Console.ReadLine(), out escolha))
+            {
+                switch (escolha)
+                {
+                    case 1:
+                        Console.Write("Digite o número a ser inserido: ");
+                        int numero = int.Parse(Console.ReadLine());
+                        numeros.Add(numero);
+                        break;
+                    case 2:
+                        Console.Write("Digite o número a ser verificado: ");
+                        int numeroVerificar = int.Parse(Console.ReadLine());
+                        bool existe = numeros.Contains(numeroVerificar);
+                        Console.WriteLine($"O número {numeroVerificar} " + (existe ? "está" : "não está") + " na lista.");
+                        break;
+                    case 3:
+                        int soma = numeros.Sum();
+                        Console.WriteLine($"A soma de todos os números na lista é: {soma}");
+                        break;
+                    case 4:
+                        int maior = numeros.Max();
+                        Console.WriteLine($"O maior número na lista é: {maior}");
+                        break;
+                    case 5:
+                        int menor = numeros.Min();
+                        Console.WriteLine($"O menor número na lista é: {menor}");
+                        break;
+                    case 6:
+                        numeros.RemoveAll(n => n % 2 == 0);
+                        Console.WriteLine("Números pares removidos da lista.");
+                        break;
+                    case 7:
+                        Console.WriteLine("Números na lista após a remoção dos pares:");
+                        foreach (int num in numeros)
+                        {
+                            Console.Write(num + " ");
+                        }
+                        Console.WriteLine();
+                        break;
+                    case 8:
+                        numeros.Reverse();
+                        Console.WriteLine("Elementos da lista foram invertidos.");
+                        break;
+                    case 9:
+                        Console.WriteLine("Programa encerrado.");
+                        return;
+                    default:
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Opção inválida. Tente novamente.");
+            }
+        }
+    }
+}
+
+3)using System;
+using System.Collections.Generic;
+
+class Contato
+{
+    public string Nome { get; set; }
+    public string Telefone { get; set; }
+    public string Email { get; set; }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<Contato> agenda = new List<Contato>();
+
+        while (true)
+        {
+            Console.WriteLine("Escolha uma opção:");
+            Console.WriteLine("1 - Adicionar novo contato");
+            Console.WriteLine("2 - Atualizar informações de um contato");
+            Console.WriteLine("3 - Excluir um contato");
+            Console.WriteLine("4 - Listar todos os contatos");
+            Console.WriteLine("5 - Sair");
+
+            int escolha;
+            if (int.TryParse(Console.ReadLine(), out escolha))
+            {
+                switch (escolha)
+                {
+                    case 1:
+                        Console.Write("Nome: ");
+                        string nome = Console.ReadLine();
+                        Console.Write("Telefone: ");
+                        string telefone = Console.ReadLine();
+                        Console.Write("E-mail: ");
+                        string email = Console.ReadLine();
+                        Contato novoContato = new Contato { Nome = nome, Telefone = telefone, Email = email };
+                        agenda.Add(novoContato);
+                        Console.WriteLine("Contato adicionado com sucesso.");
+                        break;
+                    case 2:
+                        Console.Write("Digite o nome do contato a ser atualizado: ");
+                        string nomeAtualizar = Console.ReadLine();
+                        Contato contatoAtualizar = agenda.Find(contato => contato.Nome == nomeAtualizar);
+                        if (contatoAtualizar != null)
+                        {
+                            Console.Write("Novo telefone: ");
+                            string novoTelefone = Console.ReadLine();
+                            Console.Write("Novo e-mail: ");
+                            string novoEmail = Console.ReadLine();
+                            contatoAtualizar.Telefone = novoTelefone;
+                            contatoAtualizar.Email = novoEmail;
+                            Console.WriteLine("Contato atualizado com sucesso.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Contato não encontrado.");
+                        }
+                        break;
+                    case 3:
+                        Console.Write("Digite o nome do contato a ser excluído: ");
+                        string nomeExcluir = Console.ReadLine();
+                        Contato contatoExcluir = agenda.Find(contato => contato.Nome == nomeExcluir);
+                        if (contatoExcluir != null)
+                        {
+                            agenda.Remove(contatoExcluir);
+                            Console.WriteLine("Contato excluído com sucesso.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Contato não encontrado.");
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine("Lista de contatos:");
+                        foreach (var contato in agenda)
+                        {
+                            Console.WriteLine($"Nome: {contato.Nome}, Telefone: {contato.Telefone}, E-mail: {contato.Email}");
+                        }
+                        break;
+                    case 5:
+                        Console.WriteLine("Programa encerrado.");
+                        return;
+                    default:
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Opção inválida. Tente novamente.");
+            }
+        }
+    }
+}
+
+4)
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite um valor inteiro positivo n (maior ou igual a 3): ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n < 3)
+        {
+            Console.WriteLine("O valor de n deve ser maior ou igual a 3.");
+            return;
+        }
+
+        Stack<int> pilha = new Stack<int>();
+        int a = 0;
+        int b = 1;
+
+        for (int i = 0; i < n; i++)
+        {
+            pilha.Push(a);
+            int temp = a;
+            a = b;
+            b = temp + b;
+        }
+
+        Console.WriteLine($"Os {n} primeiros elementos da sequência de Fibonacci em ordem decrescente:");
+        while (pilha.Count > 0)
+        {
+            Console.Write(pilha.Pop() + " ");
+        }
+    }
+}
+
+5)
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite uma string: ");
+        string inputString = Console.ReadLine();
+
+        string stringInvertida = InverterStringComPilha(inputString);
+
+        Console.WriteLine($"String invertida: {stringInvertida}");
+    }
+
+    static string InverterStringComPilha(string input)
+    {
+        Stack<char> pilha = new Stack<char>();
+
+        foreach (char c in input)
+        {
+            pilha.Push(c);
+        }
+
+        char[] arrayInvertido = new char[input.Length];
+        int index = 0;
+
+        while (pilha.Count > 0)
+        {
+            arrayInvertido[index++] = pilha.Pop();
+        }
+
+        return new string(arrayInvertido);
+    }
+}
+
+6)
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static Queue<int> filaIniciacaoCientifica = new Queue<int>();
+    static Queue<int> filaMestrado = new Queue<int>();
+
+    static void Main(string[] args)
+    {
+        int opcao;
+
+        do
+        {
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1 - Inserir um aluno na fila de espera de bolsas de Iniciação Científica");
+            Console.WriteLine("2 - Inserir um aluno na fila de espera de bolsas de Mestrado");
+            Console.WriteLine("3 - Remover um aluno da fila de bolsas de Iniciação Científica");
+            Console.WriteLine("4 - Remover um aluno da fila de bolsas de Mestrado");
+            Console.WriteLine("5 - Mostrar fila de espera de bolsas de Iniciação Científica");
+            Console.WriteLine("6 - Mostrar fila de espera de bolsas de Mestrado");
+            Console.WriteLine("7 - Pesquisar aluno na fila de espera de bolsas de Iniciação Científica");
+            Console.WriteLine("8 - Pesquisar aluno na fila de espera de bolsas de Mestrado");
+            Console.WriteLine("9 - Mostrar qual o aluno que está no início da fila de espera de bolsas de Iniciação Científica");
+            Console.WriteLine("10 - Mostrar qual o aluno que está no início da fila de espera de bolsas de Mestrado");
+            Console.WriteLine("11 - Encerrar o programa");
+
+            Console.Write("Escolha uma opção: ");
+            opcao = int.Parse(Console.ReadLine());
+
+            switch (opcao)
+            {
+                case 1:
+                    InserirAluno(filaIniciacaoCientifica, "Iniciação Científica");
+                    break;
+                case 2:
+                    InserirAluno(filaMestrado, "Mestrado");
+                    break;
+                case 3:
+                    RemoverAluno(filaIniciacaoCientifica, "Iniciação Científica");
+                    break;
+                case 4:
+                    RemoverAluno(filaMestrado, "Mestrado");
+                    break;
+                case 5:
+                    MostrarFila(filaIniciacaoCientifica, "Fila de Iniciação Científica");
+                    break;
+                case 6:
+                    MostrarFila(filaMestrado, "Fila de Mestrado");
+                    break;
+                case 7:
+                    PesquisarAluno(filaIniciacaoCientifica, "Iniciação Científica");
+                    break;
+                case 8:
+                    PesquisarAluno(filaMestrado, "Mestrado");
+                    break;
+                case 9:
+                    MostrarPrimeiroAluno(filaIniciacaoCientifica, "Iniciação Científica");
+                    break;
+                case 10:
+                    MostrarPrimeiroAluno(filaMestrado, "Mestrado");
+                    break;
+                case 11:
+                    Console.WriteLine("Encerrando o programa.");
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+
+        } while (opcao != 11);
+    }
+
+    static void InserirAluno(Queue<int> fila, string tipoBolsa)
+    {
+        Console.Write("Digite o código do aluno: ");
+        int codigo = int.Parse(Console.ReadLine());
+        fila.Enqueue(codigo);
+        Console.WriteLine($"Aluno adicionado à fila de {tipoBolsa}.");
+    }
+
+    static void RemoverAluno(Queue<int> fila, string tipoBolsa)
+    {
+        if (fila.Count > 0)
+        {
+            int codigoRemovido = fila.Dequeue();
+            Console.WriteLine($"Aluno removido da fila de {tipoBolsa}. Código: {codigoRemovido}");
+        }
+        else
+        {
+            Console.WriteLine($"A fila de {tipoBolsa} está vazia.");
+        }
+    }
+
+    static void MostrarFila(Queue<int> fila, string tipoBolsa)
+    {
+        Console.WriteLine($"Fila de {tipoBolsa}:");
+        foreach (int codigo in fila)
+        {
+            Console.WriteLine($"Código: {codigo}");
+        }
+    }
+
+    static void PesquisarAluno(Queue<int> fila, string tipoBolsa)
+    {
+        Console.Write("Digite o código do aluno a ser pesquisado: ");
+        int codigoPesquisa = int.Parse(Console.ReadLine());
+        bool encontrado = fila.Contains(codigoPesquisa);
+        Console.WriteLine($"Aluno {(encontrado ? "encontrado" : "não encontrado")} na fila de {tipoBolsa}.");
+    }
+
+    static void MostrarPrimeiroAluno(Queue<int> fila, string tipoBolsa)
+    {
+        if (fila.Count > 0)
+        {
+            int primeiroAluno = fila.Peek();
+            Console.WriteLine($"O aluno no início da fila de {tipoBolsa} tem o código: {primeiroAluno}");
+        }
+        else
+        {
+            Console.WriteLine($"A fila de {tipoBolsa} está vazia.");
+        }
+    }
+}
+
+7)
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static Queue<string> filaDeAtendimento = new Queue<string>();
+
+    static void Main(string[] args)
+    {
+        int opcao;
+
+        do
+        {
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1 - Adicionar um cliente à fila");
+            Console.WriteLine("2 - Atender um cliente");
+            Console.WriteLine("3 - Exibir o número de clientes na fila");
+            Console.WriteLine("4 - Exibir o próximo cliente a ser atendido");
+            Console.WriteLine("5 - Encerrar o programa");
+
+            Console.Write("Escolha uma opção: ");
+            opcao = int.Parse(Console.ReadLine());
+
+            switch (opcao)
+            {
+                case 1:
+                    AdicionarCliente();
+                    break;
+                case 2:
+                    AtenderCliente();
+                    break;
+                case 3:
+                    ExibirNumeroDeClientes();
+                    break;
+                case 4:
+                    ExibirProximoCliente();
+                    break;
+                case 5:
+                    Console.WriteLine("Encerrando o programa.");
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+
+        } while (opcao != 5);
+    }
+
+    static void AdicionarCliente()
+    {
+        Console.Write("Digite o nome do cliente: ");
+        string cliente = Console.ReadLine();
+        filaDeAtendimento.Enqueue(cliente);
+        Console.WriteLine($"Cliente {cliente} adicionado à fila.");
+    }
+
+    static void AtenderCliente()
+    {
+        if (filaDeAtendimento.Count > 0)
+        {
+            string clienteAtendido = filaDeAtendimento.Dequeue();
+            Console.WriteLine($"Cliente {clienteAtendido} atendido e removido da fila.");
+        }
+        else
+        {
+            Console.WriteLine("A fila está vazia. Não há clientes para atender.");
+        }
+    }
+
+    static void ExibirNumeroDeClientes()
+    {
+        int numeroDeClientes = filaDeAtendimento.Count;
+        Console.WriteLine($"Número de clientes na fila: {numeroDeClientes}");
+    }
+
+    static void ExibirProximoCliente()
+    {
+        if (filaDeAtendimento.Count > 0)
+        {
+            string proximoCliente = filaDeAtendimento.Peek();
+            Console.WriteLine($"Próximo cliente a ser atendido: {proximoCliente}");
+        }
+        else
+        {
+            Console.WriteLine("A fila está vazia. Não há próximo cliente.");
+        }
+    }
+}

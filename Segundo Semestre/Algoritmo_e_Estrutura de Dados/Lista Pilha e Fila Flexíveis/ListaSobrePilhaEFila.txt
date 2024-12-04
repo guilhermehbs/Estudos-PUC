@@ -1,0 +1,178 @@
+1)
+
+public void InverterPilha()
+{
+    if (topo == null)
+    {
+        return;
+    }
+
+    Pilha pilhaAuxiliar = new Pilha();
+
+    while (topo != null)
+    {
+        int elemento = Remover();
+        pilhaAuxiliar.Inserir(elemento);
+    }
+
+    while (pilhaAuxiliar.topo != null)
+    {
+        int elemento = pilhaAuxiliar.Remover();
+        Inserir(elemento);
+    }
+}
+
+2)
+
+public bool VerificarPalindromo()
+{
+    Pilha pilhaAuxiliar = new Pilha();
+    bool isPalindromo = true;
+
+    while (topo != null)
+    {
+        char caractere = (char)Remover();
+        pilhaAuxiliar.Inserir(caractere);
+    }
+
+    while (pilhaAuxiliar.topo != null)
+    {
+        char caracterePilhaAuxiliar = (char)pilhaAuxiliar.Remover();
+        char caractereOriginal = (char)Remover();
+
+        if (caracterePilhaAuxiliar != caractereOriginal)
+        {
+            isPalindromo = false;
+        }
+
+        Inserir(caractereOriginal);
+    }
+
+    while (pilhaAuxiliar.topo != null)
+    {
+        char caractere = (char)pilhaAuxiliar.Remover();
+        Inserir(caractere);
+    }
+
+    return isPalindromo;
+}
+
+3)
+
+public static void CombinarFilas(Fila fila1, Fila fila2, Fila filaResultado)
+{
+    Fila tempFila1 = new Fila();
+    Fila tempFila2 = new Fila();
+
+    while (fila1.Primeiro.Prox != null)
+    {
+        int elemento = fila1.Remover();
+        tempFila1.Inserir(elemento);
+    }
+
+    while (fila2.Primeiro.Prox != null)
+    {
+        int elemento = fila2.Remover();
+        tempFila2.Inserir(elemento);
+    }
+
+    while (tempFila1.Primeiro.Prox != null && tempFila2.Primeiro.Prox != null)
+    {
+        int elemento1 = tempFila1.Primeiro.Prox.Elemento;
+        int elemento2 = tempFila2.Primeiro.Prox.Elemento;
+
+        if (elemento1 < elemento2)
+        {
+            filaResultado.Inserir(elemento1);
+            tempFila1.Remover();
+        }
+        else
+        {
+            filaResultado.Inserir(elemento2);
+            tempFila2.Remover();
+        }
+    }
+
+    while (tempFila1.Primeiro.Prox != null)
+    {
+        int elemento1 = tempFila1.Remover();
+        filaResultado.Inserir(elemento1);
+    }
+
+    while (tempFila2.Primeiro.Prox != null)
+    {
+        int elemento2 = tempFila2.Remover();
+        filaResultado.Inserir(elemento2);
+    }
+}
+
+4)
+
+public static void ConcatenarFilas(Fila fila1, Fila fila2)
+{
+    while (fila2.Primeiro.Prox != null)
+    {
+        int elemento = fila2.Remover();
+        fila1.Inserir(elemento);
+    }
+}
+
+class Program
+{
+    public static void ConcatenarFilas(Fila fila1, Fila fila2)
+    {
+        while (fila2.Primeiro.Prox != null)
+        {
+            int elemento = fila2.Remover();
+            fila1.Inserir(elemento);
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("==== FILA FLEXÍVEL ====");
+        Fila fila1 = new Fila();
+        Fila fila2 = new Fila();
+
+        fila1.Inserir(1);
+        fila1.Inserir(3);
+        fila1.Inserir(5);
+
+        fila2.Inserir(2);
+        fila2.Inserir(4);
+        fila2.Inserir(6);
+
+        Console.WriteLine("Elementos da Fila 1:");
+        fila1.Mostrar();
+
+        Console.WriteLine("Elementos da Fila 2:");
+        fila2.Mostrar();
+
+        ConcatenarFilas(fila1, fila2);
+
+        Console.WriteLine("Elementos da Fila 1 após a concatenação:");
+        fila1.Mostrar();
+
+        Console.WriteLine("Elementos da Fila 2 após a concatenação (vazia):");
+        fila2.Mostrar();
+    }
+}
+
+5) 
+
+public static void InverterFilaComPilha(Fila fila)
+{
+    Pilha pilha = new Pilha();
+
+    while (fila.Primeiro.Prox != null)
+    {
+        int elemento = fila.Remover();
+        pilha.Inserir(elemento);
+    }
+
+    while (pilha.Topo != null)
+    {
+        int elemento = pilha.Remover();
+        fila.Inserir(elemento);
+    }
+}

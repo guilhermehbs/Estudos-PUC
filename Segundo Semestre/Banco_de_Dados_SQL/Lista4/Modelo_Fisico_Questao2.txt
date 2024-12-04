@@ -1,0 +1,85 @@
+/* Lógico_1: */
+
+CREATE TABLE CLIENTE (
+    nome varchar,
+    data_nascimento varchar,
+    endereco varchar,
+    telefone_residencial varchar,
+    telefone_comercial varchar,
+    telefone_celular varchar,
+    codigo_cliente varchar PRIMARY KEY
+);
+
+CREATE TABLE EQUIPAMENTO (
+    cpu varchar,
+    ram varchar,
+    modelo varchar,
+    hd varchar,
+    cd_rom varchar,
+    codigo_equipamento varchar PRIMARY KEY,
+    fabricante varchar,
+    FK_FABRICANTE_codigo_fabricante varchar,
+    FK_SERVICOS_codigo_servico varchar
+);
+
+CREATE TABLE FABRICANTE (
+    nome varchar,
+    codigo_fabricante varchar PRIMARY KEY
+);
+
+CREATE TABLE PECAS (
+    codigo_fabricante varchar,
+    fabricante varchar,
+    valor_unitario varchar,
+    quantidade varchar,
+    valor_total varchar,
+    nome varchar,
+    codigo_peca varchar PRIMARY KEY,
+    FK_FABRICANTE_codigo_fabricante varchar,
+    FK_EQUIPAMENTO_codigo_equipamento varchar
+);
+
+CREATE TABLE FUNCIONARIO (
+    nome varchar,
+    codigo_responsavel varchar PRIMARY KEY,
+    FK_SERVICOS_codigo_servico varchar
+);
+
+CREATE TABLE SERVICOS (
+    valor_total varchar,
+    nome_responsavel varchar,
+    codigo_responsavel varchar,
+    descricao varchar,
+    codigo_servico varchar PRIMARY KEY,
+    FK_CLIENTE_codigo_cliente varchar
+);
+ 
+ALTER TABLE EQUIPAMENTO ADD CONSTRAINT FK_EQUIPAMENTO_2
+    FOREIGN KEY (FK_FABRICANTE_codigo_fabricante)
+    REFERENCES FABRICANTE (codigo_fabricante)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE EQUIPAMENTO ADD CONSTRAINT FK_EQUIPAMENTO_3
+    FOREIGN KEY (FK_SERVICOS_codigo_servico)
+    REFERENCES SERVICOS (codigo_servico)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE PECAS ADD CONSTRAINT FK_PECAS_2
+    FOREIGN KEY (FK_FABRICANTE_codigo_fabricante)
+    REFERENCES FABRICANTE (codigo_fabricante)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE PECAS ADD CONSTRAINT FK_PECAS_3
+    FOREIGN KEY (FK_EQUIPAMENTO_codigo_equipamento)
+    REFERENCES EQUIPAMENTO (codigo_equipamento)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE FUNCIONARIO ADD CONSTRAINT FK_FUNCIONARIO_2
+    FOREIGN KEY (FK_SERVICOS_codigo_servico)
+    REFERENCES SERVICOS (codigo_servico)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE SERVICOS ADD CONSTRAINT FK_SERVICOS_2
+    FOREIGN KEY (FK_CLIENTE_codigo_cliente)
+    REFERENCES CLIENTE (codigo_cliente)
+    ON DELETE RESTRICT;

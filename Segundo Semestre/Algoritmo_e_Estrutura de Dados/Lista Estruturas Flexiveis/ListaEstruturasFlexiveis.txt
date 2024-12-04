@@ -1,0 +1,489 @@
+1)
+
+    public void Inverter()
+    {
+        
+        Lista auxiliar = new Lista();
+
+        for(Celula j= primeiro.Prox; j != null; j = j.Prox)
+        {
+            Celula i;
+            for (i = primeiro; i.Prox != ultimo; i = i.Prox) ;
+            int elemento = ultimo.Elemento;
+            auxiliar.InserirFim(elemento);
+            ultimo = i;
+        }
+
+        for(Celula i = auxiliar.primeiro.Prox; i != null; i = i.Prox)
+        {
+            InserirFim(i.Elemento);
+        }
+    }
+
+------------------------------------------------------------------------------------------------------------
+
+2)
+
+    public void Inverter()
+    {
+        ListaDupla auxiliar = new ListaDupla();
+
+        for(CelulaDupla i = primeiro.Prox; i != null;i = i.Prox)
+        {
+            CelulaDupla j;
+            for (j = primeiro; j.Prox != ultimo; j = j.Prox) ;
+            int elemento = ultimo.Elemento;
+            auxiliar.InserirFim(elemento);
+            ultimo = j;
+        }
+
+        for(CelulaDupla i = auxiliar.primeiro.Prox; i != null; i = i.Prox)
+        {
+            InserirFim(i.Elemento);
+        }
+    }
+
+------------------------------------------------------------------------------------------------------------
+
+3) 
+
+    public bool encontrarMaior(out int valor, out int posicao)
+    {
+        int maior = int.MinValue;
+        int contarPosicao = 0;
+        bool retorno = false;
+
+        for(CelulaDupla i = primeiro.Prox; i != null; i = i.Prox)
+        {
+            if(i.Elemento > maior)
+            {
+                maior = i.Elemento;
+                contarPosicao++;
+                retorno = true;
+            }
+        }
+
+        valor = maior;
+        posicao = contarPosicao+1;
+        
+        if(retorno) { return true; }
+        else { return false; }
+    }
+
+    public bool BuscarMaiorElemento(out int posicao, out int valor)
+    {
+        int contarPosicao = 0;
+        int maior = int.MinValue;
+        bool retorno = false;
+
+        for(Celula i = primeiro.Prox; i != null;i = i.Prox)
+        {
+            if(i.Elemento > maior)
+            {
+                maior = i.Elemento;
+                contarPosicao++;
+                retorno = true;
+            }
+        }
+
+        posicao = contarPosicao+1;
+        valor = maior;
+
+        if (retorno) { return true; }
+        else { return false; }
+    }
+
+
+------------------------------------------------------------------------------------------------------------
+
+4) 
+
+    public void InserirOrdenado(int x)
+    {
+        if(primeiro == ultimo)
+        {
+            ultimo.Prox = new CelulaDupla(x);
+            ultimo.Prox.Ant = ultimo;
+            ultimo = ultimo.Prox;
+        }
+        else
+        {
+
+            bool inserido = false;
+            for(CelulaDupla i = primeiro.Prox; i != null; i = i.Prox)
+            {
+                if(i.Elemento > x)
+                {
+                    CelulaDupla tmp = new CelulaDupla(x);
+                    tmp.Prox = i;
+                    i.Ant.Prox = tmp;
+                    i.Ant = tmp.Ant;
+                    i.Ant = tmp;
+                    tmp = null;
+                    inserido = true;
+                    break;
+                }
+            }
+
+            if (!inserido)
+            {
+                    ultimo.Prox = new CelulaDupla(x);
+                    ultimo.Prox.Ant = ultimo;
+                    ultimo = ultimo.Prox;
+            }
+        }
+    }
+
+    public void InserirOrdenado(int x)
+    {
+        if(primeiro == ultimo)
+        {
+            InserirFim(x);
+        }
+        else
+        {
+
+            bool inserido = false;
+            for(Celula i = primeiro.Prox; i != null; i = i.Prox)
+            {
+                if(i.Elemento > x)
+                {
+                    Celula tmp = new Celula(x);
+                    Celula j;
+                    for (j = primeiro; j.Prox != i; j = j.Prox) ;
+                    tmp.Prox = i;
+                    j.Prox = tmp;
+                    tmp = i = j = null;
+                    inserido = true;
+                    return;
+                }
+                
+            }
+
+            if (!inserido)
+            {
+                InserirFim(x);
+            }
+        }
+    }
+
+
+------------------------------------------------------------------------------------------------------------
+
+5)
+
+    public void UnirListas(ListaDupla segundaLista)
+    {
+        for (CelulaDupla i = segundaLista.primeiro.Prox; i != null; i = i.Prox)
+        {
+            InserirFim(i.Elemento);
+        }
+    }
+
+    public void UnirListas(Lista segundaLista)
+    {
+        for (Celula i = segundaLista.primeiro.Prox; i != null; i = i.Prox)
+        {
+            InserirFim(i.Elemento);
+        }
+
+    }
+
+
+------------------------------------------------------------------------------------------------------------
+
+6)
+
+    public int tamanhoListaDupla()
+    {
+        return tamanhoRecursivo(primeiro.Prox);
+    }
+
+    private int tamanhoRecursivo(CelulaDupla celula)
+    {
+        if (celula == null)
+        {
+            return 0;
+        }
+        return 1 + tamanhoRecursivo(celula.Prox);
+    }
+
+    public int tamanhoLista()
+    {
+        return tamanhoRecursivo(primeiro.Prox);
+    }
+
+    private int tamanhoRecursivo(Celula celula)
+    {
+        if (celula == null)
+        {
+            return 0;
+        }
+        return 1 + tamanhoRecursivo(celula.Prox);
+    }
+
+------------------------------------------------------------------------------------------------------------
+
+7)
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Exercicio7
+{
+    class Contato
+    {
+        public string Nome { get; set; }
+        public string Telefone { get; set; }
+        public string Email { get; set; }
+
+        public Contato(string nome, string telefone, string email)
+        {
+            Nome = nome;
+            Telefone = telefone;
+            Email = email;
+        }
+
+        public override string ToString()
+        {
+            return $"Nome: {Nome}, Telefone: {Telefone}, Email: {Email}";
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Exercicio7
+{
+    class Agenda
+    {
+        private ListaDupla listaContatos = new ListaDupla();
+
+        public void AdicionarContato(string nome, string telefone, string email)
+        {
+            Contato novoContato = new Contato(nome, telefone, email);
+            listaContatos.InserirFim(novoContato);
+        }
+
+        public void AtualizarContato(int posicao, string nome, string telefone, string email)
+        {
+            if (posicao >= 0 && posicao < listaContatos.Tamanho())
+            {
+                Contato contatoAtualizado = new Contato(nome, telefone, email);
+                listaContatos.AlterarElemento(posicao, contatoAtualizado);
+            }
+            else
+            {
+                Console.WriteLine("Posição inválida.");
+            }
+        }
+
+        public void ExcluirContato(int posicao)
+        {
+            if (posicao >= 0 && posicao < listaContatos.Tamanho())
+            {
+                listaContatos.Remover(posicao);
+            }
+            else
+            {
+                Console.WriteLine("Posição inválida.");
+            }
+        }
+
+        public void ListarContatos()
+        {
+            Console.WriteLine("Lista de Contatos:");
+            for (int i = 0; i < listaContatos.Tamanho(); i++)
+            {
+                Contato contato = listaContatos.Recuperar(i);
+                Console.WriteLine($"Posição {i+1}: {contato}");
+            }
+        }
+    }
+}
+
+
+using System;
+using Exercicio7;
+
+class CelulaDupla
+{
+    private Contato elemento;
+    private CelulaDupla prox, ant;
+
+    public CelulaDupla(Contato elemento)
+    {
+        this.elemento = elemento;
+        this.prox = null;
+        this.ant = null;
+    }
+
+    public CelulaDupla()
+    {
+        this.elemento = null;
+        this.prox = null;
+        this.ant = null;
+    }
+
+    public CelulaDupla Prox
+    {
+        get { return prox; }
+        set { prox = value; }
+    }
+
+    public CelulaDupla Ant
+    {
+        get { return ant; }
+        set { ant = value; }
+    }
+
+    public Contato Elemento
+    {
+        get { return elemento; }
+        set { elemento = value; }
+    }
+
+}
+
+class ListaDupla
+{
+    private CelulaDupla primeiro, ultimo;
+    public ListaDupla()
+    {
+        primeiro = new CelulaDupla();
+        ultimo = primeiro;
+    }
+
+    public void InserirInicio(Contato x)
+    {
+        CelulaDupla tmp = new CelulaDupla(x);
+        tmp.Ant = primeiro;
+        tmp.Prox = primeiro.Prox;
+        primeiro.Prox = tmp;
+        if (primeiro == ultimo)
+        {
+            ultimo = tmp;
+        }
+        else
+        {
+            tmp.Prox.Ant = tmp;
+        }
+        tmp = null;
+    }
+
+    public void InserirFim(Contato x)
+    {
+        ultimo.Prox = new CelulaDupla(x);
+        ultimo.Prox.Ant = ultimo;
+        ultimo = ultimo.Prox;
+    }
+
+    public Contato RemoverInicio()
+    {
+        if (primeiro == ultimo)
+            throw new Exception("Erro!");
+        CelulaDupla tmp = primeiro;
+        primeiro = primeiro.Prox;
+        Contato elemento = primeiro.Elemento;
+        tmp.Prox = primeiro.Ant = null;
+        tmp = null;
+        return elemento;
+    }
+
+    public Contato RemoverFim()
+    {
+        if (primeiro == ultimo)
+            throw new Exception("Erro!");
+
+        Contato elemento = ultimo.Elemento;
+        ultimo = ultimo.Ant;
+        ultimo.Prox.Ant = null;
+        ultimo.Prox = null;
+        return elemento;
+    }
+
+    public int Tamanho()
+    {
+        int tam = 0;
+        for (CelulaDupla i = primeiro; i != ultimo; i = i.Prox)
+        {
+            tam++;
+        }
+
+        return tam;
+    }
+
+
+    public Contato Remover(int pos)
+    {
+        Contato elemento; 
+        int tamanho = Tamanho();
+        if (primeiro == ultimo)
+        {
+            throw new Exception("Erro!");
+        }
+        else if (pos < 0 || pos >= tamanho)
+        {
+            throw new Exception("Erro!");
+        }
+        else if (pos == 0)
+        {
+            elemento = RemoverInicio();
+        }
+        else if (pos == tamanho - 1)
+        {
+            elemento = RemoverFim();
+        }
+        else
+        {
+            CelulaDupla i = primeiro.Prox;
+            for (int j = 0; j < pos; j++, i = i.Prox) ;
+            i.Ant.Prox = i.Prox;
+            i.Prox.Ant = i.Ant;
+            elemento = i.Elemento;
+            i.Prox = i.Ant = null;
+            i = null;
+        }
+        return elemento;
+    }
+
+
+    public Contato Recuperar(int pos)
+    {
+        if (pos >= 0 && pos < Tamanho())
+        {
+            CelulaDupla celula = EncontrarCelula(pos);
+            return celula.Elemento;
+        }
+        return null;
+    }
+
+    private CelulaDupla EncontrarCelula(int pos)
+    {
+        CelulaDupla celula = primeiro.Prox;
+        for (int i = 0; i < pos; i++)
+        {
+            celula = celula.Prox;
+        }
+        return celula;
+    }
+
+    public void AlterarElemento(int pos, Contato novoContato)
+    {
+        if (pos >= 0 && pos < Tamanho())
+        {
+            CelulaDupla celula = EncontrarCelula(pos);
+            celula.Elemento = novoContato;
+        }
+    }
+}
+
+

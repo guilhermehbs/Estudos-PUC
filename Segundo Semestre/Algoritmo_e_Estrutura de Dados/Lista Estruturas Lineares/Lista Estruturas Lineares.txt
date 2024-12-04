@@ -1,0 +1,622 @@
+1)
+
+using System;
+
+class Program
+{
+    static Lista filmes = new Lista();
+
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1 - Inserir um filme no final da lista");
+            Console.WriteLine("2 - Inserir um filme em uma posição específica da lista");
+            Console.WriteLine("3 - Remover um filme da lista");
+            Console.WriteLine("4 - Remover um filme em uma posição específica da lista");
+            Console.WriteLine("5 - Pesquisar se um filme consta na lista");
+            Console.WriteLine("6 - Listar todos os filmes da lista");
+            Console.WriteLine("7 - Inverter a ordem dos filmes na lista");
+            Console.WriteLine("8 - Encerrar o programa");
+
+            string opcao = Console.ReadLine();
+
+            switch (opcao)
+            {
+                case "1":
+                    InserirFilme();
+                    break;
+                case "2":
+                    InserirFilmePosicao();
+                    break;
+                case "3":
+                    RemoverFilme();
+                    break;
+                case "4":
+                    RemoverFilmePosicao();
+                    break;
+                case "5":
+                    PesquisarFilme();
+                    break;
+                case "6":
+                    ListarFilmes();
+                    break;
+                case "7":
+                    InverterOrdem();
+                    break;
+                case "8":
+                    Console.WriteLine("Encerrando o programa. Até logo!");
+                    return;
+                default:
+                    Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+                    break;
+            }
+        }
+    }
+
+    static void InserirFilme()
+    {
+        Console.Write("Digite o nome do filme que deseja inserir: ");
+        string filme = Console.ReadLine();
+        filmes.InserirFim(filme);
+        Console.WriteLine($"O filme '{filme}' foi inserido no final da lista.");
+    }
+
+    static void InserirFilmePosicao()
+    {
+        Console.Write("Digite o nome do filme que deseja inserir: ");
+        string filme = Console.ReadLine();
+        Console.Write("Digite a posição onde deseja inserir o filme: ");
+        int posicao = int.Parse(Console.ReadLine());
+
+        if (posicao >= 0 && posicao <= filmes.ContarElementos())
+        {
+            filmes.Inserir(posicao, filme);
+            Console.WriteLine($"O filme '{filme}' foi inserido na posição {posicao} da lista.");
+        }
+        else
+        {
+            Console.WriteLine("Posição inválida.");
+        }
+    }
+
+    static void RemoverFilme()
+    {
+        Console.Write("Digite o nome do filme que deseja remover: ");
+        string filme = Console.ReadLine();
+
+        if (filmes.Remover(filme))
+        {
+            Console.WriteLine($"O filme '{filme}' foi removido da lista.");
+        }
+        else
+        {
+            Console.WriteLine($"O filme '{filme}' não foi encontrado na lista.");
+        }
+    }
+
+    static void RemoverFilmePosicao()
+    {
+        Console.Write("Digite a posição do filme que deseja remover: ");
+        int posicao = int.Parse(Console.ReadLine());
+
+        if (posicao >= 0 && posicao < filmes.ContarElementos())
+        {
+            string filmeRemovido = filmes.Remover(posicao);
+            Console.WriteLine($"O filme '{filmeRemovido}' foi removido da posição {posicao} da lista.");
+        }
+        else
+        {
+            Console.WriteLine("Posição inválida.");
+        }
+    }
+
+    static void PesquisarFilme()
+    {
+        Console.Write("Digite o nome do filme que deseja pesquisar: ");
+        string filme = Console.ReadLine();
+
+        if (filmes.Contem(filme))
+        {
+            Console.WriteLine($"O filme '{filme}' está na lista.");
+        }
+        else
+        {
+            Console.WriteLine($"O filme '{filme}' não está na lista.");
+        }
+    }
+
+    static void ListarFilmes()
+    {
+        Console.WriteLine("Lista de filmes:");
+        filmes.Mostrar();
+    }
+
+    static void InverterOrdem()
+    {
+        filmes.Inverter();
+        Console.WriteLine("A ordem dos filmes na lista foi invertida.");
+    }
+}
+
+
+2)
+
+using System;
+
+class Program
+{
+    static Lista filmes = new Lista();
+
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1 - Inserir um filme no final da lista");
+            Console.WriteLine("2 - Inserir um filme em uma posição específica da lista");
+            Console.WriteLine("3 - Remover um filme da lista");
+            Console.WriteLine("4 - Remover um filme em uma posição específica da lista");
+            Console.WriteLine("5 - Pesquisar se um filme consta na lista");
+            Console.WriteLine("6 - Listar todos os filmes da lista");
+            Console.WriteLine("7 - Inverter a ordem dos filmes na lista");
+            Console.WriteLine("8 - Encerrar o programa");
+
+            string opcao = Console.ReadLine();
+
+            switch (opcao)
+            {
+                case "1":
+                    InserirFilme();
+                    break;
+                case "2":
+                    InserirFilmePosicao();
+                    break;
+                case "3":
+                    RemoverFilme();
+                    break;
+                case "4":
+                    RemoverFilmePosicao();
+                    break;
+                case "5":
+                    PesquisarFilme();
+                    break;
+                case "6":
+                    ListarFilmes();
+                    break;
+                case "7":
+                    InverterOrdem();
+                    break;
+                case "8":
+                    Console.WriteLine("Encerrando o programa. Até logo!");
+                    return;
+                default:
+                    Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+                    break;
+            }
+        }
+    }
+
+    static void InserirFilme()
+    {
+        Console.Write("Digite o nome do filme que deseja inserir: ");
+        string filme = Console.ReadLine();
+        filmes.InserirFim(filme);
+        Console.WriteLine($"O filme '{filme}' foi inserido no final da lista.");
+    }
+
+    static void InserirFilmePosicao()
+    {
+        Console.Write("Digite o nome do filme que deseja inserir: ");
+        string filme = Console.ReadLine();
+        Console.Write("Digite a posição onde deseja inserir o filme: ");
+        int posicao = int.Parse(Console.ReadLine());
+
+        if (posicao >= 0 && posicao <= filmes.ContarElementos())
+        {
+            filmes.Inserir(posicao, filme);
+            Console.WriteLine($"O filme '{filme}' foi inserido na posição {posicao} da lista.");
+        }
+        else
+        {
+            Console.WriteLine("Posição inválida.");
+        }
+    }
+
+    static void RemoverFilme()
+    {
+        Console.Write("Digite o nome do filme que deseja remover: ");
+        string filme = Console.ReadLine();
+
+        if (filmes.Remover(filme))
+        {
+            Console.WriteLine($"O filme '{filme}' foi removido da lista.");
+        }
+        else
+        {
+            Console.WriteLine($"O filme '{filme}' não foi encontrado na lista.");
+        }
+    }
+
+    static void RemoverFilmePosicao()
+    {
+        Console.Write("Digite a posição do filme que deseja remover: ");
+        int posicao = int.Parse(Console.ReadLine());
+
+        if (posicao >= 0 && posicao < filmes.ContarElementos())
+        {
+            string filmeRemovido = filmes.Remover(posicao);
+            Console.WriteLine($"O filme '{filmeRemovido}' foi removido da posição {posicao} da lista.");
+        }
+        else
+        {
+            Console.WriteLine("Posição inválida.");
+        }
+    }
+
+    static void PesquisarFilme()
+    {
+        Console.Write("Digite o nome do filme que deseja pesquisar: ");
+        string filme = Console.ReadLine();
+
+        if (filmes.Contem(filme))
+        {
+            Console.WriteLine($"O filme '{filme}' está na lista.");
+        }
+        else
+        {
+            Console.WriteLine($"O filme '{filme}' não está na lista.");
+        }
+    }
+
+    static void ListarFilmes()
+    {
+        Console.WriteLine("Lista de filmes:");
+        filmes.Mostrar();
+    }
+
+    static void InverterOrdem()
+    {
+        filmes.Inverter();
+        Console.WriteLine("A ordem dos filmes na lista foi invertida.");
+    }
+}
+
+3)
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite um valor inteiro positivo maior ou igual a 3 (n): ");
+        if (int.TryParse(Console.ReadLine(), out int n) && n >= 3)
+        {
+            Pilha pilha = new Pilha();
+
+            int a = 0;
+            int b = 1;
+
+            for (int i = 0; i < n; i++)
+            {
+                pilha.Push(a);
+                int temp = a;
+                a = b;
+                b = temp + b;
+            }
+
+            Console.Write("Os primeiros " + n + " elementos da sequência de Fibonacci em ordem decrescente: ");
+            while (n > 0)
+            {
+                Console.Write(pilha.Pop() + " ");
+                n--;
+            }
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.WriteLine("O valor de 'n' deve ser um número inteiro positivo maior ou igual a 3.");
+        }
+    }
+}
+
+4)
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite uma string: ");
+        string input = Console.ReadLine();
+
+        Pilha pilha = new Pilha();
+
+        foreach (char c in input)
+        {
+            pilha.Inserir(c);
+        }
+
+        Console.Write("String Invertida: ");
+        while (true)
+        {
+            try
+            {
+                char c = (char)pilha.Remover();
+                Console.Write(c);
+            }
+            catch (Exception)
+            {
+                break;
+            }
+        }
+        Console.WriteLine();
+    }
+}
+
+5)
+using System;
+
+class Program
+{
+    static FilaCircular filaIniciacaoCientifica;
+    static FilaCircular filaMestrado;
+
+    static void Main()
+    {
+        Console.WriteLine("==== Gerenciamento de Filas ====");
+        filaIniciacaoCientifica = new FilaCircular(5);
+        filaMestrado = new FilaCircular(5);
+
+        while (true)
+        {
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1 - Inserir um aluno na fila de espera de bolsas de Iniciação Científica");
+            Console.WriteLine("2 - Inserir um aluno na fila de espera de bolsas de Mestrado");
+            Console.WriteLine("3 - Remover um aluno da fila de bolsas de Iniciação Científica");
+            Console.WriteLine("4 - Remover um aluno da fila de bolsas de Mestrado");
+            Console.WriteLine("5 - Mostrar fila de espera de bolsas de Iniciação Científica");
+            Console.WriteLine("6 - Mostrar fila de espera de bolsas de Mestrado");
+            Console.WriteLine("7 - Pesquisar aluno na fila de espera de bolsas de Iniciação Científica");
+            Console.WriteLine("8 - Pesquisar aluno na fila de espera de bolsas de Mestrado");
+            Console.WriteLine("9 - Mostrar qual o aluno que está no início da fila de espera de bolsas de Iniciação Científica");
+            Console.WriteLine("10 - Mostrar qual o aluno que está no início da fila de espera de bolsas de Mestrado");
+            Console.WriteLine("11 - Encerrar o programa");
+
+            string opcao = Console.ReadLine();
+
+            switch (opcao)
+            {
+                case "1":
+                    InserirAluno(filaIniciacaoCientifica);
+                    break;
+                case "2":
+                    InserirAluno(filaMestrado);
+                    break;
+                case "3":
+                    RemoverAluno(filaIniciacaoCientifica);
+                    break;
+                case "4":
+                    RemoverAluno(filaMestrado);
+                    break;
+                case "5":
+                    MostrarFila(filaIniciacaoCientifica);
+                    break;
+                case "6":
+                    MostrarFila(filaMestrado);
+                    break;
+                case "7":
+                    PesquisarAluno(filaIniciacaoCientifica);
+                    break;
+                case "8":
+                    PesquisarAluno(filaMestrado);
+                    break;
+                case "9":
+                    MostrarInicioFila(filaIniciacaoCientifica);
+                    break;
+                case "10":
+                    MostrarInicioFila(filaMestrado);
+                    break;
+                case "11":
+                    Console.WriteLine("Encerrando o programa. Até logo!");
+                    return;
+                default:
+                    Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+                    break;
+            }
+        }
+    }
+
+    static void InserirAluno(FilaCircular fila)
+    {
+        Console.Write("Digite o código do aluno: ");
+        if (int.TryParse(Console.ReadLine(), out int codigo))
+        {
+            fila.Inserir(codigo);
+            Console.WriteLine("Aluno inserido na fila.");
+        }
+        else
+        {
+            Console.WriteLine("Código inválido. Por favor, insira um número inteiro.");
+        }
+    }
+
+    static void RemoverAluno(FilaCircular fila)
+    {
+        if (FilaVazia(fila))
+        {
+            Console.WriteLine("A fila está vazia.");
+        }
+        else
+        {
+            int alunoRemovido = fila.Remover();
+            Console.WriteLine("Aluno removido da fila. Código: " + alunoRemovido);
+        }
+    }
+
+    static void MostrarFila(FilaCircular fila)
+    {
+        Console.WriteLine("Fila de espera:");
+        fila.Mostrar();
+    }
+
+    static void PesquisarAluno(FilaCircular fila)
+    {
+        Console.Write("Digite o código do aluno a ser pesquisado: ");
+        if (int.TryParse(Console.ReadLine(), out int codigo))
+        {
+            if (fila.Contem(codigo))
+            {
+                Console.WriteLine("Aluno encontrado na fila.");
+            }
+            else
+            {
+                Console.WriteLine("Aluno não encontrado na fila.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Código inválido. Por favor, insira um número inteiro.");
+        }
+    }
+
+    static void MostrarInicioFila(FilaCircular fila)
+    {
+        if (FilaVazia(fila))
+        {
+            Console.WriteLine("A fila está vazia.");
+        }
+        else
+        {
+            int inicio = fila.ObterInicio();
+            Console.WriteLine("Aluno no início da fila. Código: " + inicio);
+        }
+    }
+
+    static bool FilaVazia(FilaCircular fila)
+    {
+        return fila.Vazia();
+    }
+}
+
+6)
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        FilaCircular fila = new FilaCircular(5);
+
+        while (true)
+        {
+            Console.WriteLine("Escolha uma opção:");
+            Console.WriteLine("a) Adicionar um cliente à fila");
+            Console.WriteLine("b) Atender um cliente");
+            Console.WriteLine("c) Exibir o número de clientes na fila");
+            Console.WriteLine("d) Exibir o próximo cliente a ser atendido");
+            Console.WriteLine("e) Sair");
+
+            char escolha = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            switch (escolha)
+            {
+                case 'a':
+                    Console.Write("Digite o nome do cliente: ");
+                    string nome = Console.ReadLine();
+                    fila.Enfileirar(nome);
+                    break;
+
+                case 'b':
+                    string clienteAtendido = fila.Desenfileirar();
+                    if (clienteAtendido != null)
+                    {
+                        Console.WriteLine($"Cliente atendido: {clienteAtendido}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fila vazia. Nenhum cliente para atender.");
+                    }
+                    break;
+
+                case 'c':
+                    Console.WriteLine($"Número de clientes na fila: {fila.Tamanho}");
+                    break;
+
+                case 'd':
+                    string proximoCliente = fila.ProximoCliente();
+                    if (proximoCliente != null)
+                    {
+                        Console.WriteLine($"Próximo cliente a ser atendido: {proximoCliente}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fila vazia. Nenhum cliente na fila.");
+                    }
+                    break;
+
+                case 'e':
+                    Environment.Exit(0);
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
+}
+
+7)
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Queue<int> fila = new Queue<int>();
+        fila.Enqueue(1);
+        fila.Enqueue(2);
+        fila.Enqueue(3);
+        fila.Enqueue(4);
+        fila.Enqueue(5);
+
+        Console.WriteLine("Fila original:");
+        ImprimirFila(fila);
+
+        InverterFila(fila);
+
+        Console.WriteLine("Fila invertida:");
+        ImprimirFila(fila);
+    }
+
+    static void InverterFila(Queue<int> fila)
+    {
+        Stack<int> pilha = new Stack<int>();
+
+        while (fila.Count > 0)
+        {
+            pilha.Push(fila.Dequeue());
+        }
+
+        while (pilha.Count > 0)
+        {
+            fila.Enqueue(pilha.Pop());
+        }
+    }
+
+    static void ImprimirFila(Queue<int> fila)
+    {
+        foreach (int elemento in fila)
+        {
+            Console.Write(elemento + " ");
+        }
+        Console.WriteLine();
+    }
+}

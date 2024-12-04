@@ -1,0 +1,109 @@
+/* Lógico_1: */
+
+CREATE TABLE Farmacia (
+    Nome varchar,
+    CNPJ varchar PRIMARY KEY,
+    cidade varchar,
+    rua varchar
+);
+
+CREATE TABLE funcionario (
+    Maticula varchar PRIMARY KEY,
+    nome varchar,
+    Salario varchar,
+    fk_Farmacia_CNPJ varchar
+);
+
+CREATE TABLE farmaceutico (
+    n_conselho_p varchar,
+    fk_funcionario_Maticula varchar PRIMARY KEY
+);
+
+CREATE TABLE atendente (
+    P_comissao varchar,
+    fk_funcionario_Maticula varchar PRIMARY KEY
+);
+
+CREATE TABLE gerente (
+    v_vendas varchar,
+    fk_funcionario_Maticula varchar PRIMARY KEY
+);
+
+CREATE TABLE podutos (
+    codigo varchar PRIMARY KEY,
+    descricao varchar,
+    preco varchar,
+    quantidade double,
+    fk_Farmacia_CNPJ varchar,
+    fk_nota_fiscal_codigo_nota varchar,
+    fk_cliente_codigo_cliente varchar
+);
+
+CREATE TABLE remedio (
+    data_valdiade date,
+    obrigatoriedade_receita varchar,
+    fk_podutos_codigo varchar PRIMARY KEY
+);
+
+CREATE TABLE nota_fiscal (
+    data_emissao date,
+    valor_total double,
+    nome_cliente varchar,
+    codigo_nota varchar PRIMARY KEY,
+    fk_cliente_codigo_cliente varchar
+);
+
+CREATE TABLE cliente (
+    nome varchar,
+    cpf varchar,
+    data_nascimento date,
+    idade int,
+    telefones varchar,
+    endereco varchar,
+    codigo_cliente varchar PRIMARY KEY
+);
+ 
+ALTER TABLE funcionario ADD CONSTRAINT FK_funcionario_2
+    FOREIGN KEY (fk_Farmacia_CNPJ)
+    REFERENCES Farmacia (CNPJ)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE farmaceutico ADD CONSTRAINT FK_farmaceutico_2
+    FOREIGN KEY (fk_funcionario_Maticula)
+    REFERENCES funcionario (Maticula)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE atendente ADD CONSTRAINT FK_atendente_2
+    FOREIGN KEY (fk_funcionario_Maticula)
+    REFERENCES funcionario (Maticula)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE gerente ADD CONSTRAINT FK_gerente_2
+    FOREIGN KEY (fk_funcionario_Maticula)
+    REFERENCES funcionario (Maticula)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE podutos ADD CONSTRAINT FK_podutos_2
+    FOREIGN KEY (fk_Farmacia_CNPJ)
+    REFERENCES Farmacia (CNPJ)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE podutos ADD CONSTRAINT FK_podutos_3
+    FOREIGN KEY (fk_nota_fiscal_codigo_nota)
+    REFERENCES nota_fiscal (codigo_nota)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE podutos ADD CONSTRAINT FK_podutos_4
+    FOREIGN KEY (fk_cliente_codigo_cliente)
+    REFERENCES cliente (codigo_cliente)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE remedio ADD CONSTRAINT FK_remedio_2
+    FOREIGN KEY (fk_podutos_codigo)
+    REFERENCES podutos (codigo)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE nota_fiscal ADD CONSTRAINT FK_nota_fiscal_2
+    FOREIGN KEY (fk_cliente_codigo_cliente)
+    REFERENCES cliente (codigo_cliente)
+    ON DELETE CASCADE;

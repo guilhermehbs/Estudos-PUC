@@ -1,0 +1,459 @@
+1)
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        Dictionary<string, int> wordCount = new Dictionary<string, int>();
+        string filePath = "Aula_Praticas_Collections.txt";
+
+        try
+        {
+            string[] linhas = File.ReadAllLines(filePath);
+
+            foreach (string linha in linhas)
+            {
+                string[] words = linha.Split(' ', '.', ',', ';', '!', '?', ':');
+
+                foreach (string word in words)
+                {
+                    string cleanedWord = word.ToLower().Trim();
+                    if (!string.IsNullOrWhiteSpace(cleanedWord))
+                    {
+                        if (wordCount.ContainsKey(cleanedWord))
+                        {
+                            wordCount[cleanedWord]++;
+                        }
+                        else
+                        {
+                            wordCount[cleanedWord] = 1;
+                        }
+                    }
+                }
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Escolha uma opção:");
+                Console.WriteLine("1. Verificar se uma palavra está no dicionário");
+                Console.WriteLine("2. Consultar quantas palavras distintas estão no dicionário");
+                Console.WriteLine("3. Imprimir todas as palavras e suas frequências");
+                Console.WriteLine("4. Sair");
+
+                int opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        Console.Write("Digite a palavra que deseja verificar: ");
+                        string palavra = Console.ReadLine().ToLower();
+                        if (wordCount.ContainsKey(palavra))
+                        {
+                            Console.WriteLine($"A palavra '{palavra}' aparece {wordCount[palavra]} vezes.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("A palavra não está no dicionário.");
+                        }
+                        break;
+
+                    case 2:
+                        Console.WriteLine($"Existem {wordCount.Count} palavras distintas no dicionário.");
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Palavras e suas frequências:");
+                        foreach (var word in wordCount)
+                        {
+                            Console.WriteLine($"{word.Key}: {word.Value} vezes");
+                        }
+                        break;
+
+                    case 4:
+                        return;
+
+                    default:
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                        break;
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            Console.WriteLine($"Ocorreu um erro ao ler o arquivo: {e.Message}");
+        }
+    }
+}
+
+2)
+using System;
+using System.Collections.Generic;
+
+class Programa
+{
+    static void Main()
+    {
+        List<int> numeros = new List<int>();
+        Dictionary<int, int> frequenciaNumeros = new Dictionary<int, int>();
+
+        Console.WriteLine("Digite uma lista de números inteiros separados por espaço (ex: 1 2 3 4):");
+        string entrada = Console.ReadLine();
+        string[] numerosString = entrada.Split(' ');
+
+        foreach (string numeroString in numerosString)
+        {
+            if (int.TryParse(numeroString, out int numero))
+            {
+                numeros.Add(numero);
+            }
+            else
+            {
+                Console.WriteLine($"Ignorando entrada inválida: {numeroString}");
+            }
+        }
+
+        foreach (int numero in numeros)
+        {
+            if (frequenciaNumeros.ContainsKey(numero))
+            {
+                frequenciaNumeros[numero]++;
+            }
+            else
+            {
+                frequenciaNumeros[numero] = 1;
+            }
+        }
+
+        while (true)
+        {
+            Console.WriteLine("Escolha uma opção:");
+            Console.WriteLine("1. Verificar se um número está no dicionário");
+            Console.WriteLine("2. Consultar quantos números distintos estão no dicionário");
+            Console.WriteLine("3. Imprimir todos os números e suas frequências");
+            Console.WriteLine("4. Sair");
+
+            int escolha = int.Parse(Console.ReadLine());
+
+            switch (escolha)
+            {
+                case 1:
+                    Console.Write("Digite o número que deseja verificar: ");
+                    int numeroVerificar = int.Parse(Console.ReadLine());
+                    if (frequenciaNumeros.ContainsKey(numeroVerificar))
+                    {
+                        Console.WriteLine($"O número {numeroVerificar} aparece {frequenciaNumeros[numeroVerificar]} vezes.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"O número {numeroVerificar} não está no dicionário.");
+                    }
+                    break;
+
+                case 2:
+                    Console.WriteLine($"Existem {frequenciaNumeros.Count} números distintos no dicionário.");
+                    break;
+
+                case 3:
+                    Console.WriteLine("Números e suas frequências:");
+                    foreach (var numero in frequenciaNumeros)
+                    {
+                        Console.WriteLine($"{numero.Key}: {numero.Value} vezes");
+                    }
+                    break;
+
+                case 4:
+                    return;
+
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
+}
+
+3)
+using System;
+using System.Collections.Generic;
+
+class Programa
+{
+    static void Main()
+    {
+        SortedList<int, string> rankingJogadores = new SortedList<int, string>();
+
+        while (true)
+        {
+            Console.WriteLine("Escolha uma opção:");
+            Console.WriteLine("d) Adicionar um novo jogador e sua pontuação");
+            Console.WriteLine("e) Verificar a pontuação de um jogador em específico");
+            Console.WriteLine("f) Remover um jogador, bem como sua pontuação");
+            Console.WriteLine("g) Exibir o ranking de pontuação de forma crescente");
+            Console.WriteLine("s) Sair");
+
+            char escolha = Console.ReadKey().KeyChar;
+            Console.WriteLine(); // Adicione uma linha em branco para melhorar a legibilidade.
+
+            switch (escolha)
+            {
+                case 'd':
+                    Console.Write("Digite o nome do jogador: ");
+                    string nomeJogador = Console.ReadLine();
+                    Console.Write("Digite a pontuação do jogador: ");
+                    int pontuacaoJogador = int.Parse(Console.ReadLine());
+                    rankingJogadores[pontuacaoJogador] = nomeJogador;
+                    Console.WriteLine($"O jogador '{nomeJogador}' com pontuação {pontuacaoJogador} foi adicionado ao ranking.");
+                    break;
+
+                case 'e':
+                    Console.Write("Digite o nome do jogador cuja pontuação você deseja verificar: ");
+                    string jogadorVerificar = Console.ReadLine();
+                    int pontuacao = BuscarPontuacaoJogador(rankingJogadores, jogadorVerificar);
+                    if (pontuacao != -1)
+                    {
+                        Console.WriteLine($"A pontuação do jogador '{jogadorVerificar}' é {pontuacao}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"O jogador '{jogadorVerificar}' não foi encontrado no ranking.");
+                    }
+                    break;
+
+                case 'f':
+                    Console.Write("Digite o nome do jogador que você deseja remover: ");
+                    string jogadorRemover = Console.ReadLine();
+                    if (rankingJogadores.ContainsValue(jogadorRemover))
+                    {
+                        int pontuacaoRemover = BuscarPontuacaoJogador(rankingJogadores, jogadorRemover);
+                        rankingJogadores.Remove(pontuacaoRemover);
+                        Console.WriteLine($"O jogador '{jogadorRemover}' com pontuação {pontuacaoRemover} foi removido do ranking.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"O jogador '{jogadorRemover}' não foi encontrado no ranking.");
+                    }
+                    break;
+
+                case 'g':
+                    Console.WriteLine("Ranking de pontuação de forma crescente:");
+                    foreach (var jogador in rankingJogadores)
+                    {
+                        Console.WriteLine($"{jogador.Value}: {jogador.Key} pontos");
+                    }
+                    break;
+
+                case 's':
+                    return;
+
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
+
+    static int BuscarPontuacaoJogador(SortedList<int, string> ranking, string nomeJogador)
+    {
+        foreach (var jogador in ranking)
+        {
+            if (jogador.Value == nomeJogador)
+            {
+                return jogador.Key;
+            }
+        }
+        return -1;
+    }
+}
+
+4) 
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        SortedList<string, List<string>> dicionarioSinonimos = new SortedList<string, List<string>>();
+
+        while (true)
+        {
+            Console.WriteLine("Escolha uma opção:");
+            Console.WriteLine("a) Adicionar uma nova palavra e seus sinônimos");
+            Console.WriteLine("b) Pesquisar os sinônimos de uma palavra em específico");
+            Console.WriteLine("c) Exibir o dicionário em ordem alfabética das palavras");
+            Console.WriteLine("s) Sair");
+
+            char escolha = Console.ReadKey().KeyChar;
+            Console.WriteLine(); // Adicione uma linha em branco para melhorar a legibilidade.
+
+            switch (escolha)
+            {
+                case 'a':
+                    Console.Write("Digite uma palavra: ");
+                    string palavra = Console.ReadLine().ToLower();
+                    Console.Write("Digite os sinônimos (separados por espaço): ");
+                    string sinonimosInput = Console.ReadLine().ToLower();
+                    string[] sinonimosArray = sinonimosInput.Split(' ');
+                    List<string> sinonimos = new List<string>(sinonimosArray);
+
+                    if (dicionarioSinonimos.ContainsKey(palavra))
+                    {
+                        dicionarioSinonimos[palavra].AddRange(sinonimos);
+                    }
+                    else
+                    {
+                        dicionarioSinonimos[palavra] = sinonimos;
+                    }
+
+                    Console.WriteLine($"A palavra '{palavra}' e seus sinônimos foram adicionados ao dicionário.");
+                    break;
+
+                case 'b':
+                    Console.Write("Digite a palavra cujos sinônimos você deseja pesquisar: ");
+                    string palavraPesquisar = Console.ReadLine().ToLower();
+                    if (dicionarioSinonimos.ContainsKey(palavraPesquisar))
+                    {
+                        Console.WriteLine($"Sinônimos para '{palavraPesquisar}':");
+                        foreach (var sinonimo in dicionarioSinonimos[palavraPesquisar])
+                        {
+                            Console.WriteLine(sinonimo);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"A palavra '{palavraPesquisar}' não foi encontrada no dicionário.");
+                    }
+                    break;
+
+                case 'c':
+                    Console.WriteLine("Dicionário em ordem alfabética das palavras:");
+                    foreach (var entrada in dicionarioSinonimos)
+                    {
+                        Console.WriteLine($"{entrada.Key}: {string.Join(", ", entrada.Value)}");
+                    }
+                    break;
+
+                case 's':
+                    return;
+
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
+}
+
+5)
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        LinkedList<string> listaFilmes = new LinkedList<string>();
+
+        while (true)
+        {
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1 - Inserir um filme no final da lista");
+            Console.WriteLine("2 - Inserir um filme depois de uma posição específica da lista");
+            Console.WriteLine("3 - Inserir um filme antes de uma posição específica da lista");
+            Console.WriteLine("4 - Remover o filme que estiver no final da lista");
+            Console.WriteLine("5 - Pesquisar se um filme consta na lista");
+            Console.WriteLine("6 - Listar todos os filmes da lista");
+            Console.WriteLine("7 - Encerrar o programa");
+
+            int escolha = int.Parse(Console.ReadLine());
+
+            switch (escolha)
+            {
+                case 1:
+                    Console.Write("Digite o nome do filme a ser inserido no final da lista: ");
+                    string filmeFinal = Console.ReadLine();
+                    listaFilmes.AddLast(filmeFinal);
+                    Console.WriteLine($"O filme '{filmeFinal}' foi adicionado ao final da lista.");
+                    break;
+
+                case 2:
+                    Console.Write("Digite o nome do filme a ser inserido: ");
+                    string filmeInserir = Console.ReadLine();
+                    Console.Write("Digite o nome do filme após o qual deseja inserir: ");
+                    string filmeApos = Console.ReadLine();
+                    LinkedListNode<string> nodeApos = listaFilmes.Find(filmeApos);
+                    if (nodeApos != null)
+                    {
+                        listaFilmes.AddAfter(nodeApos, filmeInserir);
+                        Console.WriteLine($"O filme '{filmeInserir}' foi inserido depois de '{filmeApos}'.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"O filme '{filmeApos}' não foi encontrado na lista.");
+                    }
+                    break;
+
+                case 3:
+                    Console.Write("Digite o nome do filme a ser inserido: ");
+                    string filmeInserirAntes = Console.ReadLine();
+                    Console.Write("Digite o nome do filme antes do qual deseja inserir: ");
+                    string filmeAntes = Console.ReadLine();
+                    LinkedListNode<string> nodeAntes = listaFilmes.Find(filmeAntes);
+                    if (nodeAntes != null)
+                    {
+                        listaFilmes.AddBefore(nodeAntes, filmeInserirAntes);
+                        Console.WriteLine($"O filme '{filmeInserirAntes}' foi inserido antes de '{filmeAntes}'.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"O filme '{filmeAntes}' não foi encontrado na lista.");
+                    }
+                    break;
+
+                case 4:
+                    if (listaFilmes.Count > 0)
+                    {
+                        string filmeRemovido = listaFilmes.Last.Value;
+                        listaFilmes.RemoveLast();
+                        Console.WriteLine($"O filme '{filmeRemovido}' foi removido do final da lista.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("A lista de filmes está vazia. Não é possível remover.");
+                    }
+                    break;
+
+                case 5:
+                    Console.Write("Digite o nome do filme a ser pesquisado: ");
+                    string filmePesquisar = Console.ReadLine();
+                    if (listaFilmes.Contains(filmePesquisar))
+                    {
+                        Console.WriteLine($"O filme '{filmePesquisar}' consta na lista.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"O filme '{filmePesquisar}' não consta na lista.");
+                    }
+                    break;
+
+                case 6:
+                    Console.WriteLine("Lista de filmes:");
+                    foreach (string filme in listaFilmes)
+                    {
+                        Console.WriteLine(filme);
+                    }
+                    break;
+
+                case 7:
+                    return;
+
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
+}
